@@ -7,3 +7,12 @@
     font-family: Montserrat, Noto Sans KR, system-ui, sans-serif;
   }
 }
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  @apply flex flex-col bg-primaryBg p-10 text-white;
+}
+
+input {
+  @apply my-1 border border-gray-300 p-4 outline-none;
+}
