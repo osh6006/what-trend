@@ -30,7 +30,7 @@ export const Item = ({ text, icon, color = "text-brand" }: ItemProps) => {
         {icon === "sports" && <MdOutlineSportsBasketball />}
         {icon === "music" && <IoMdMusicalNote />}
       </div>
-      <p>{text}</p>
+      <p className="select-none">{text}</p>
     </div>
   );
 };

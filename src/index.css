@@ -10,7 +10,7 @@
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply flex flex-col bg-primaryBg p-10 text-white;
+  @apply flex flex-col bg-primaryBg sm:flex-row;
 }
 
 input {
