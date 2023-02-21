@@ -1,18 +1,27 @@
 import React from "react";
-import { Item } from "../components/home/Item";
-
+import { Button } from "../components/Button";
 export default function Home() {
+  const handleClick = (e: React.MouseEvent): void => {
+    console.log("asdf");
+  };
   return (
     <>
-      <div className="mt-10 grid grid-cols-1 justify-items-center gap-10 rounded-3xl px-5 py-32 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-5">
-        <Item text="날씨" icon="weather" />
-        <Item text="유머" icon="humor" color="text-yellow-500" />
-        <Item text="OTT" icon="OTT" color="text-red-400" />
-        <Item text="SNS" icon="SNS" color="text-violet-400" />
-        <Item text="쇼핑" icon="shopping" color="text-pink-400" />
-        <Item text="스포츠" icon="sports" color="text-orange-400" />
-        <Item text="음악" icon="music" color="text-lime-400" />
-      </div>
+      <main className="flex-1 flex-col py-4 lg:flex-row">
+        <section className="w-full bg-white p-5 lg:w-5/12 lg:min-w-[500px]">
+          <div className="flex w-full items-center justify-between">
+            <div>
+              <h1 className="text-xl font-medium">Today's Weather</h1>
+              <h6 className="font-thin text-neutral-500">
+                {new Intl.DateTimeFormat("en-US", {
+                  dateStyle: "medium",
+                }).format(new Date())}
+              </h6>
+            </div>
+            <Button title="View" onClick={handleClick} />
+          </div>
+        </section>
+        <section className="w-full border-r-2 p-5 lg:w-6/12">second</section>
+      </main>
     </>
   );
 }

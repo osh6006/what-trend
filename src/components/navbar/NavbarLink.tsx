@@ -25,8 +25,6 @@ export const NavbarLink = ({ title, path }: NavberLinkProps) => {
   const { pathname } = useLocation();
   const navigation = useNavigate();
 
-  console.log(pathname);
-
   return (
     <li
       className={path === pathname ? activeClassName : passiveClassName}
