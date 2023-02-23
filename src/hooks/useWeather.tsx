@@ -13,21 +13,26 @@ export default function useWeather(): any {
     useCurrentLocation(geolocationOptions);
 
   const queryClient = useQueryClient();
-  const weatherQuery = useQuery(
+
+  const homeWeatherQuery = useQuery(
     ["weatherThreeDays", currentLocation],
     () => getRecentlyWeather(currentLocation),
     {
       staleTime: 1000 * 60 * 5,
       refetchOnWindowFocus: false,
+      select: (data: any) => {
+        const city = data?.city;
+        const threeDays = data.list?.filter((data: any, i: number) => {
+          if (i === 1 || i === 8 || i === 20) {
+            return true;
+          } else {
+            return false;
+          }
+        });
+        return { threeDays, city };
+      },
     }
   );
 
-  // eslint-disable-next-line array-callback-return
-  const threeDays = weatherQuery?.data?.list?.filter((data: any, i: number) => {
-    if (i === 1 || i === 8 || i === 17) {
-      return true;
-    }
-  });
-
-  return { weatherQuery, threeDays };
+  return { homeWeatherQuery };
 }
