@@ -30,14 +30,14 @@ export const TodayWeather = () => {
           <h1 className="text-xl">{homeWeatherQuery?.data?.city?.country}</h1>
         </div>
       </div>
-      <div className="mt-3 flex w-full justify-around gap-3">
+      <div className="mt-3 flex w-full flex-col justify-around gap-3 md:flex-row">
         {!homeWeatherQuery.isLoading &&
           homeWeatherQuery?.data?.threeDays?.map((data: any, i: number) => (
             <div
               key={data?.dt}
-              className="flex flex-col rounded-lg p-2 shadow-md"
+              className="flex items-center justify-between rounded-lg p-3 shadow-md md:flex-col"
             >
-              <div className="flex items-center text-xl">
+              <div className="flex items-center text-xl md:flex-col 2xl:flex-row">
                 <div>
                   <h2 className="font-bold">{data?.weather[0]?.main}</h2>
                   <p className="text-center text-lg font-bold">
