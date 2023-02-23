@@ -1,15 +1,15 @@
 import React from "react";
 import { Button } from "../components/Button";
+import useWeather from "../hooks/useWeather";
 
 const DATE = new Intl.DateTimeFormat("en-US", {
   dateStyle: "medium",
 }).format(new Date());
 
 export default function Home() {
-  const handleClick = (e: React.MouseEvent): void => {
-    console.log("asdf");
-  };
-
+  const handleClick = (e: React.MouseEvent): void => {};
+  const { threeDays } = useWeather();
+  console.log(threeDays);
   return (
     <>
       <main className="flex flex-1 flex-col py-4 lg:flex-row">

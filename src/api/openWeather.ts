@@ -1,10 +1,20 @@
-export async function getRecentlyWeather<T>(): Promise<T> {
-  return fetch(
-    "api.openweathermap.org/data/2.5/forecast?lat=36.4791&lon=127.0931&appid=f79ff78b6d115afb2c171b3d1759d92e"
-  )
-    .then(response => response.json())
-    .then(result => result)
-    .catch(error => console.log("error", error));
+const requestOptions = {
+  method: "GET",
+};
+
+interface Location {
+  latitude: number;
+  longitude: number;
 }
 
-export const getThreeDaysWeather = (): void => {};
+export async function getRecentlyWeather(location: Location | undefined) {
+  if (location) {
+    const res = await fetch(
+      `${process.env.REACT_APP_ADDRESS}?lat=${location.latitude}&lon=${location.longitude}&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}`,
+      requestOptions
+    );
+    return res.json();
+  }
+
+  return [];
+}

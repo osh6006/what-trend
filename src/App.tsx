@@ -1,10 +1,9 @@
-import { QueryClient } from "react-query";
-import { QueryClientProvider } from "react-query/types/react";
+import { QueryClient, QueryClientProvider } from "react-query";
 import { Outlet } from "react-router-dom";
 import { Navbar } from "./components/navbar/Navbar";
 
-const queryClient = new QueryClient();
 function App() {
+  const queryClient = new QueryClient();
   return (
     <QueryClientProvider client={queryClient}>
       <Navbar />
