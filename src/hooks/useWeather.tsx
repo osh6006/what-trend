@@ -1,4 +1,4 @@
-import { useQuery, useMutation, useQueryClient } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import { getRecentlyWeather } from "../api/openWeather";
 import useCurrentLocation from "./useCurrentLocation";
 
@@ -7,6 +7,8 @@ const geolocationOptions = {
   timeout: 1000 * 60 * 5, // 1 min (1000 ms * 60 sec * 1 minute = 60 000ms)
   maximumAge: 1000 * 3600 * 24, // 24 hour
 };
+
+const defaultLocation = {};
 
 export default function useWeather(): any {
   const { location: currentLocation, error: currentError } =
@@ -23,7 +25,7 @@ export default function useWeather(): any {
       select: (data: any) => {
         const city = data?.city;
         const threeDays = data.list?.filter((data: any, i: number) => {
-          if (i === 1 || i === 8 || i === 20) {
+          if (i === 4 || i === 12 || i === 20) {
             return true;
           } else {
             return false;

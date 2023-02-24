@@ -1,5 +1,6 @@
 /* eslint-disable array-callback-return */
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import useWeather from "../../hooks/useWeather";
 import { Button } from "../Button";
 
@@ -10,10 +11,11 @@ const DATE = new Intl.DateTimeFormat("en-US", {
 const KALBIN = 273.15;
 
 export const TodayWeather = () => {
-  const handleClick = (e: React.MouseEvent): void => {};
+  const nav = useNavigate();
+  const handleClick = (e: React.MouseEvent): void => {
+    nav("/weather");
+  };
   const { homeWeatherQuery } = useWeather();
-
-  console.log(homeWeatherQuery);
 
   return (
     <>
