@@ -13,7 +13,7 @@ export const Navbar = () => {
   return (
     <>
       {/* desktop & tablet */}
-      <header className="hidden h-screen w-72 select-none justify-center border-r-2 p-10 font-normal sm:flex lg:w-96">
+      <header className="fixed hidden h-full w-72 select-none justify-center p-10 font-normal sm:flex lg:w-96">
         <div className="flex w-full flex-col items-center gap-3">
           <img src="/logo.png" alt="logo" className="aspect-square w-7" />
           <h1 className="font-mono text-2xl font-semibold">What's Trends?</h1>

@@ -8,8 +8,6 @@ const geolocationOptions = {
   maximumAge: 1000 * 3600 * 24, // 24 hour
 };
 
-const defaultLocation = {};
-
 export default function useWeather(): any {
   const { location: currentLocation, error: currentError } =
     useCurrentLocation(geolocationOptions);

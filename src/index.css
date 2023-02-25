@@ -8,11 +8,12 @@
   }
 }
 #root {
-  @apply flex flex-col bg-primaryBg sm:flex-row;
+  @apply flex flex-col overflow-y-auto bg-primaryBg sm:flex-row;
 }
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  @apply bg-primaryBg;
 }
 
 input {
