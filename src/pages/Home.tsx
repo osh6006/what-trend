@@ -1,3 +1,4 @@
+import { HomeOTT } from "../components/home/HomeOTT";
 import { HumorRank } from "../components/home/HumorRank";
 import { TodayWeather } from "../components/home/TodayWeather";
 
@@ -10,7 +11,7 @@ export default function Home() {
           <HumorRank />
         </section>
         <section className="w-full border-r-2 p-5 lg:w-5/12 lg:min-w-[500px]">
-          second
+          <HomeOTT />
         </section>
       </main>
       {/* <div className="absolute bottom-5 right-1 h-20 w-20 rounded-full bg-slate-700"></div> */}

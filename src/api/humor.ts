@@ -12,6 +12,7 @@ async function fetchHumorRankData() {
   const data = await axios.get(API_URL);
   return data;
 }
+
 // 파싱
 export const homeHumorRankParsing = async () => {
   // 위에서 추출한 HTML 전체 가져오기
@@ -25,11 +26,6 @@ export const homeHumorRankParsing = async () => {
     const rank = $(node).find(".rank").text();
     const visitor = $(node).find(".visitor").text();
 
-    // 빈 값 리턴
-    if (title === "") {
-      return;
-    }
-
     // 오브젝트 형식으로 배열에 담기
     rankArr.push({
       title,
@@ -37,6 +33,5 @@ export const homeHumorRankParsing = async () => {
       visitor,
     });
   });
-
   return rankArr;
 };

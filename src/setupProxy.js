@@ -7,4 +7,11 @@ module.exports = function (app) {
       changeOrigin: true,
     })
   );
+
+  app.use(
+    createProxyMiddleware("/top10/netflix/world/today/full", {
+      target: "https://flixpatrol.com",
+      changeOrigin: true,
+    })
+  );
 };

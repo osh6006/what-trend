@@ -1,5 +1,6 @@
 import { useQuery } from "react-query";
 import { homeHumorRankParsing } from "../api/humor";
+import { returnTopSomething } from "../util/home";
 
 export default function useHumor() {
   const homeHumorQuery = useQuery(
@@ -9,14 +10,7 @@ export default function useHumor() {
       staleTime: 1000 * 60 * 5,
       refetchOnWindowFocus: false,
       select: (data: any) => {
-        const top5 = data.filter((el: any, i: number) => {
-          if (i < 5) {
-            return true;
-          } else {
-            return false;
-          }
-        });
-
+        const top5 = returnTopSomething(data, 5);
         return top5;
       },
     }

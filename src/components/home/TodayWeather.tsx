@@ -2,7 +2,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import useWeather from "../../hooks/useWeather";
-import { Button } from "../Button";
+import { Button } from "../common/Button";
 
 const DATE = new Intl.DateTimeFormat("en-US", {
   dateStyle: "medium",

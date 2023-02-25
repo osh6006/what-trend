@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import useHumor from "../../hooks/useHumor";
-import { Button } from "../Button";
+import { Button } from "../common/Button";
 
 export const HumorRank = () => {
   const nav = useNavigate();
@@ -18,7 +18,10 @@ export const HumorRank = () => {
       </div>
       <div className="mt-5 space-y-3">
         {homeHumorQuery?.data?.map((el: any, i: number) => (
-          <div className="flex w-full justify-between rounded-md border p-5 text-lg">
+          <div
+            key={el.rank}
+            className="relative flex w-full justify-between rounded-md border p-5 text-lg shadow-md transition-transform hover:scale-105"
+          >
             <p>{el.rank}</p>
             <p>{el.title}</p>
             <p>{el.visitor}</p>
