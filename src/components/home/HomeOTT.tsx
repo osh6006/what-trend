@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import useOTT from "../../hooks/useOTT";
 import { Button } from "../common/Button";
 import { Tabs } from "../common/Tabs";
 
@@ -14,6 +15,9 @@ export const HomeOTT = () => {
     { title: "Disney +" },
     { title: "Amazon P" },
   ];
+
+  const { homeDisneyQuery } = useOTT();
+  console.log(homeDisneyQuery);
 
   return (
     <>

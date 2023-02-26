@@ -14,4 +14,11 @@ module.exports = function (app) {
       changeOrigin: true,
     })
   );
+
+  app.use(
+    createProxyMiddleware("/top10/disney/world/today/full", {
+      target: "https://flixpatrol.com",
+      changeOrigin: true,
+    })
+  );
 };

@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { homeNetflixRankParsing } from "../api/ott";
+import { homeDisenyRankParsing, homeNetflixRankParsing } from "../api/ott";
 import { returnTopSomething } from "../util/home";
 
 export default function useOTT() {
@@ -17,7 +17,19 @@ export default function useOTT() {
     }
   );
 
-  // const homeDisneyQuery = useQuery(["homeDisney"])
+  const homeDisneyQuery = useQuery(
+    ["homeDisney"],
+    () => homeDisenyRankParsing(),
+    {
+      staleTime: 1000 * 60 * 5,
+      refetchOnWindowFocus: false,
+      select: (data: any) => {
+        const movieTop10 = returnTopSomething(data.movie, 10);
+        const tvTop10 = returnTopSomething(data.movie, 10);
+        return { movieTop10, tvTop10 };
+      },
+    }
+  );
 
-  return { homeNeflixQuery };
+  return { homeNeflixQuery, homeDisneyQuery };
 }
