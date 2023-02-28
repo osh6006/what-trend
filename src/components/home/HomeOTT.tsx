@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import useOTT from "../../hooks/useOTT";
 import { Button } from "../common/Button";
-import { Tabs } from "../common/Tabs";
+import { OTTTabs } from "./OTTTabs";
 
 export const HomeOTT = () => {
   const nav = useNavigate();
@@ -16,9 +16,6 @@ export const HomeOTT = () => {
     { title: "Amazon P" },
   ];
 
-  const { homeDisneyQuery } = useOTT();
-  console.log(homeDisneyQuery);
-
   return (
     <>
       <div className="mt-5 flex w-full items-center justify-between">
@@ -27,7 +24,7 @@ export const HomeOTT = () => {
         </div>
         <Button title="more view" onClick={handleClick} />
       </div>
-      <Tabs tabs={defaultTab} />
+      <OTTTabs tabs={defaultTab} />
     </>
   );
 };
