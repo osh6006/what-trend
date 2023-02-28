@@ -45,7 +45,7 @@ export const NavMobileMenu = ({ setIsOpen, isOpen }: NavMobileType) => {
         className={location.pathname === "/" ? commonPathClass : ""}
         onClick={() => handleNav("/")}
       >
-        홈
+        Home
       </li>
       <li
         className={
@@ -55,10 +55,10 @@ export const NavMobileMenu = ({ setIsOpen, isOpen }: NavMobileType) => {
         }
         onClick={() => handleNav("/weather")}
       >
-        날짜
+        Weather
       </li>
       <li className={location.pathname === "/humor" ? commonPathClass : ""}>
-        유머
+        Humor
       </li>
       <li className={location.pathname === "/ott" ? commonPathClass : ""}>
         OTT
@@ -67,13 +67,13 @@ export const NavMobileMenu = ({ setIsOpen, isOpen }: NavMobileType) => {
         SNS
       </li>
       <li className={location.pathname === "/shopping" ? commonPathClass : ""}>
-        쇼핑
+        Shopping
       </li>
       <li className={location.pathname === "/sports" ? commonPathClass : ""}>
-        스포츠
+        Sports
       </li>
       <li className={location.pathname === "/music" ? commonPathClass : ""}>
-        음악
+        Music
       </li>
     </ul>
   );
