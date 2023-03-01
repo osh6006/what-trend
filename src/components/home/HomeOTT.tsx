@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import useOTT from "../../hooks/useOTT";
 import { Button } from "../common/Button";
 import { OTTTabs } from "./OTTTabs";
 

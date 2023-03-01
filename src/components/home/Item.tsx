@@ -18,10 +18,10 @@ interface ItemProps {
 export const Item = ({ text, icon, color = "text-brand" }: ItemProps) => {
   return (
     <div
-      className={`flex min-w-[150px] max-w-[200px] cursor-pointer flex-col items-center justify-center gap-4 
-    rounded-3xl px-10 py-5 transition-all hover:scale-110  hover:bg-secondaryBg ${color} font-bold shadow-md shadow-zinc-900 hover:shadow-none`}
+      className={`flex cursor-pointer flex-col items-center justify-center py-2 px-5
+    transition-all hover:scale-110 ${color} rounded-md font-bold shadow-md`}
     >
-      <div className={`text-8xl`}>
+      <div className={`text-5xl`}>
         {icon === "weather" && <TiWeatherPartlySunny />}
         {icon === "humor" && <GoSmiley />}
         {icon === "OTT" && <MdVideoLibrary />}

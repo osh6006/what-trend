@@ -24,7 +24,7 @@ export const OTTTabs = ({ tabs }: TabsProps) => {
 
   return (
     <>
-      <div className="mt-3 border-b border-gray-200 text-center text-sm font-medium text-gray-500 dark:border-gray-700 dark:text-gray-400 ">
+      <div className="border-b border-gray-200 text-center text-sm font-medium text-gray-500 dark:border-gray-700 dark:text-gray-400 ">
         {/* tabhead */}
         <ul className="-mb-px flex w-full flex-wrap justify-around">
           {tabs?.map((el: Tab, i: number) => (
@@ -41,7 +41,7 @@ export const OTTTabs = ({ tabs }: TabsProps) => {
         </ul>
       </div>
       {/* contents */}
-      <ul className="mt-5 w-full rounded-b-lg border-2 ">
+      <ul className="mt-3 w-full rounded-b-lg border-2 ">
         <li className="flex w-full gap-5 bg-black px-5 py-3 text-white">
           <div>Rank</div>
           <div className="flex-1 text-center">Title</div>
