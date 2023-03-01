@@ -20,12 +20,11 @@ export const OTTTabs = ({ tabs }: TabsProps) => {
   const handleTabs = (index: number): void => {
     setActiveTab(index);
   };
-  const { homeNeflixQuery, homeDisneyQuery } = useOTT();
-  console.log(homeNeflixQuery);
+  const { homeNeflixQuery, homeDisneyQuery, homeAmazonQuery } = useOTT();
 
   return (
     <>
-      <div className="mt-5 border-b border-gray-200 text-center text-sm font-medium text-gray-500 dark:border-gray-700 dark:text-gray-400 ">
+      <div className="mt-3 border-b border-gray-200 text-center text-sm font-medium text-gray-500 dark:border-gray-700 dark:text-gray-400 ">
         {/* tabhead */}
         <ul className="-mb-px flex w-full flex-wrap justify-around">
           {tabs?.map((el: Tab, i: number) => (
@@ -62,12 +61,22 @@ export const OTTTabs = ({ tabs }: TabsProps) => {
           : tabs &&
             tabs[activeTab].title === "Netflix" && (
               <div className="mt-[50%] h-72 text-center text-xl text-gray-400">
-                데이터 점검중
+                서비스 점검중
               </div>
             )}
         {tabs &&
           tabs[activeTab].title === "Disney +" &&
           homeDisneyQuery?.data?.movieTop10?.map(el => (
+            <RankItem
+              key={el.rank}
+              title={el.title}
+              rank={el.rank}
+              point={el.point}
+            />
+          ))}
+        {tabs &&
+          tabs[activeTab].title === "Amazon P" &&
+          homeAmazonQuery?.data?.movieTop10?.map(el => (
             <RankItem
               key={el.rank}
               title={el.title}

@@ -1,24 +1,18 @@
+// const { appUse } = require("./util/proxy");
 const { createProxyMiddleware } = require("http-proxy-middleware");
 
 module.exports = function (app) {
-  app.use(
-    createProxyMiddleware("/ranking", {
-      target: "https://waffleboard.io",
-      changeOrigin: true,
-    })
-  );
-
-  app.use(
-    createProxyMiddleware("/top10/netflix/world/today/full", {
-      target: "https://flixpatrol.com",
-      changeOrigin: true,
-    })
-  );
-
-  app.use(
-    createProxyMiddleware("/top10/disney/world/today/full", {
-      target: "https://flixpatrol.com",
-      changeOrigin: true,
-    })
-  );
+  appUse(app, "/ranking", "https://waffleboard.io");
+  appUse(app, "/top10/netflix/world/today/full", "https://flixpatrol.com");
+  appUse(app, "/top10/disney/world/today/full", "https://flixpatrol.com");
+  appUse(app, "/top10/amazon-prime/world/today/full", "https://flixpatrol.com");
 };
+
+function appUse(app, endpoint, target) {
+  app.use(
+    createProxyMiddleware(endpoint, {
+      target,
+      changeOrigin: true,
+    })
+  );
+}
