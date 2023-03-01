@@ -16,6 +16,9 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "/weather", element: <Weather /> },
+      { path: "/humor", element: <Weather /> },
+      { path: "/ott", element: <Weather /> },
+      { path: "/sns", element: <Weather /> },
     ],
   },
 ]);

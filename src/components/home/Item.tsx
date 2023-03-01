@@ -8,6 +8,7 @@ import {
 } from "react-icons/md";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { IoMdMusicalNote } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 interface ItemProps {
   text: string;
@@ -21,7 +22,7 @@ export const Item = ({ text, icon, color = "text-brand" }: ItemProps) => {
       className={`flex cursor-pointer flex-col items-center justify-center py-2 px-5
     transition-all hover:scale-110 ${color} rounded-md font-bold shadow-md`}
     >
-      <div className={`text-5xl`}>
+      <Link className={`text-5xl `} to={`/${text}`}>
         {icon === "weather" && <TiWeatherPartlySunny />}
         {icon === "humor" && <GoSmiley />}
         {icon === "OTT" && <MdVideoLibrary />}
@@ -29,7 +30,7 @@ export const Item = ({ text, icon, color = "text-brand" }: ItemProps) => {
         {icon === "shopping" && <AiOutlineShoppingCart />}
         {icon === "sports" && <MdOutlineSportsBasketball />}
         {icon === "music" && <IoMdMusicalNote />}
-      </div>
+      </Link>
       <p className="select-none">{text}</p>
     </div>
   );

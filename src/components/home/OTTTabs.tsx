@@ -41,7 +41,7 @@ export const OTTTabs = ({ tabs }: TabsProps) => {
         </ul>
       </div>
       {/* contents */}
-      <ul className="mt-3 w-full rounded-b-lg border-2 ">
+      <ul className="mt-3 w-full rounded-b-lg border shadow-md">
         <li className="flex w-full gap-5 bg-black px-5 py-3 text-white">
           <div>Rank</div>
           <div className="flex-1 text-center">Title</div>
