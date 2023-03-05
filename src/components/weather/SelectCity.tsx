@@ -1,5 +1,3 @@
-import React from "react";
-
 export const SelectCity = () => {
   return (
     <div className="mt-10">

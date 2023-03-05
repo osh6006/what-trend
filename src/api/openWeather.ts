@@ -22,9 +22,10 @@ export async function getRecentlyWeather(location: Location | undefined) {
 export async function getAirPolution(location: Location | undefined) {
   if (location) {
     const res = await fetch(
-      `${process.env.REACT_APP_WEATHER_ADDRESS}air_pollution?lat=${location.latitude}&lon=${location.longitude}&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}`
+      `${process.env.REACT_APP_WEATHER_ADDRESS}air_pollution?lat=${location.latitude}&lon=${location.longitude}&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}`,
+      requestOptions
     );
-    return res.json;
+    return res.json();
   }
   return [];
 }

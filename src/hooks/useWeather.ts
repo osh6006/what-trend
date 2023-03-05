@@ -1,5 +1,5 @@
 import { useQuery, useQueryClient } from "react-query";
-import { getRecentlyWeather } from "../api/openWeather";
+import { getAirPolution, getRecentlyWeather } from "../api/openWeather";
 import useCurrentLocation from "./useCurrentLocation";
 
 const geolocationOptions = {
@@ -34,5 +34,23 @@ export default function useWeather(): any {
     }
   );
 
-  return { homeWeatherQuery };
+  const airPollutionQuery = useQuery(
+    ["airPollution", currentLocation],
+    () => getAirPolution(currentLocation),
+    {
+      staleTime: 1000 * 60 * 5,
+      refetchOnWindowFocus: false,
+    }
+  );
+
+  const weatherQuery = useQuery(
+    ["weatherAll", currentLocation],
+    () => getRecentlyWeather(currentLocation),
+    {
+      staleTime: 1000 * 60 * 5,
+      refetchOnWindowFocus: false,
+    }
+  );
+
+  return { homeWeatherQuery, airPollutionQuery, weatherQuery };
 }
