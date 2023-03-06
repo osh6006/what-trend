@@ -2,13 +2,12 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import useWeather from "../../hooks/useWeather";
+import { KALBIN } from "../../util/weather";
 import { Button } from "../common/Button";
 
 const DATE = new Intl.DateTimeFormat("en-US", {
   dateStyle: "medium",
 }).format(new Date());
-
-const KALBIN = 273.15;
 
 export const TodayWeather = () => {
   const nav = useNavigate();
@@ -48,7 +47,10 @@ export const TodayWeather = () => {
                   </p>
                 </div>
                 <img
-                  src={`http://openweathermap.org/img/wn/${data?.weather[0]?.icon}@2x.png`}
+                  src={`http://openweathermap.org/img/wn/${data?.weather[0]?.icon.slice(
+                    0,
+                    2
+                  )}d@2x.png`}
                   alt="weatherIcon"
                   className="h-28 w-28"
                 />

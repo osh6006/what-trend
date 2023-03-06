@@ -4,9 +4,9 @@ import { Pollution } from "./Pollution";
 import { Week } from "./Week";
 
 const passive: string =
-  "cursor-pointer transition-colors hover:text-black  hover:after:-m-3  hover:after:block hover:after:text-center hover:after:content-['•']";
+  "cursor-pointer transition-colors hover:text-black  hover:after:-m-3  hover:after:block hover:after:text-center hover:after:content-['•'] hover:after:text-3xl";
 const active: string =
-  "cursor-pointer select-none text-black after:-m-3 after:block after:text-center after:content-['•']";
+  "cursor-pointer select-none text-black after:-m-3 after:block after:text-center after:content-['•'] after:text-3xl";
 
 export const Forecast = () => {
   const { weatherQuery, airPollutionQuery } = useWeather();
@@ -31,8 +31,10 @@ export const Forecast = () => {
           Air Pollution
         </li>
       </ul>
-      {weatherTab === "week" && <Week />}
-      {weatherTab === "pollution" && <Pollution />}
+      {weatherTab === "week" && <Week weatherQuery={weatherQuery?.data} />}
+      {weatherTab === "pollution" && (
+        <Pollution airPollutionQuery={airPollutionQuery?.data} />
+      )}
     </section>
   );
 };
