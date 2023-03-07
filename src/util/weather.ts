@@ -1,4 +1,27 @@
+import { BsEmojiHeartEyes } from "react-icons/bs";
+
+interface AirQualityOpts {
+  message: string;
+}
+
 export const KALBIN = 273.15;
+
+export const AirQuality = new Map<any, AirQualityOpts>();
+AirQuality.set(1, {
+  message: "Good",
+});
+AirQuality.set(2, {
+  message: "Fair",
+});
+AirQuality.set(3, {
+  message: "Moderate",
+});
+AirQuality.set(4, {
+  message: "Poor",
+});
+AirQuality.set(5, {
+  message: "Very Poor",
+});
 
 export function calWeather(array: any, dayAfter: number): any {
   const today = new Date();

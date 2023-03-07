@@ -6,7 +6,7 @@ import { TodayWeather } from "../components/home/TodayWeather";
 export default function Home() {
   return (
     <>
-      <main className="ml-0 flex h-screen w-full flex-1 flex-col py-4 sm:ml-72 lg:ml-96 lg:flex-row lg:pr-10">
+      <main className="ml-0 flex h-screen w-full flex-1 flex-col  py-4 sm:ml-72 lg:ml-96 lg:flex-row lg:pr-10">
         <section className="w-full bg-white p-5 shadow-lg lg:w-5/12 lg:min-w-[500px]">
           <TodayWeather />
           <HumorRank />

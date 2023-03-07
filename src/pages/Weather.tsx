@@ -16,7 +16,7 @@ export default function Weather() {
           <SelectCity />
           <Forecast />
         </section>
-        <section className="w-full rounded-r-2xl border-r-2 bg-slate-900 p-5 shadow-lg lg:w-5/12 lg:min-w-[500px]"></section>
+        <section className="w-full rounded-r-2xl border-r-2 bg-slate-900 p-5 shadow-lg lg:w-[45%] lg:min-w-[500px]"></section>
       </main>
     </WeatherContextProvider>
   );
