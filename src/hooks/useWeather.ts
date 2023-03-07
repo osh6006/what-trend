@@ -54,7 +54,7 @@ export default function useWeather(): any {
       refetchOnWindowFocus: false,
       select: (data: any) => {
         const city = data?.city;
-        const today: any = data?.list && data?.list[0];
+        const today: any = data?.list && calWeather(data?.list, 0);
         const fiveDays = data.list?.filter((data: any, i: number) => {
           const date = data.dt_txt.split(" ")[1];
           const day = data.dt_txt.split(" ")[0];

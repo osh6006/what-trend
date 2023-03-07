@@ -2,6 +2,7 @@ import React from "react";
 import { Forecast } from "../components/weather/Forecast";
 import { Search } from "../components/weather/Search";
 import { SelectCity } from "../components/weather/SelectCity";
+import { Today } from "../components/weather/Today";
 import { WeatherContextProvider } from "../context/WeatherContext";
 
 export default function Weather() {
@@ -16,7 +17,9 @@ export default function Weather() {
           <SelectCity />
           <Forecast />
         </section>
-        <section className="w-full rounded-r-2xl border-r-2 bg-slate-900 p-5 shadow-lg lg:w-[45%] lg:min-w-[500px]"></section>
+        <section className="w-full overflow-hidden rounded-r-2xl border-r-2 bg-slate-900 p-5 shadow-lg lg:w-[45%] lg:min-w-[600px]">
+          <Today />
+        </section>
       </main>
     </WeatherContextProvider>
   );

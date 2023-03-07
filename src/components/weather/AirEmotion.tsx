@@ -9,7 +9,7 @@ import { FaRegKissWinkHeart } from "react-icons/fa";
 interface air {
   airQuality: number;
 }
-const CommonClass = "text-7xl text-white";
+const CommonClass = "text-9xl text-white";
 export default function AirEmotion({ airQuality }: air) {
   switch (airQuality) {
     case 1:

@@ -57,13 +57,14 @@ export function calWeather(array: any, dayAfter: number): any {
   return { calDay, combinationDay };
 }
 
-function getDayOfWeek(day: string): string {
-  console.log();
-
+export function getDayOfWeek(day: string): string {
   //ex) getDayOfWeek('2022-06-13')
-
   const week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   const dayOfWeek = week[new Date(day).getDay()];
+
+  if (day === "today") {
+    return week[new Date().getDay()];
+  }
 
   return dayOfWeek;
 }

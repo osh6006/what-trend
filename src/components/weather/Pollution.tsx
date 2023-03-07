@@ -23,10 +23,10 @@ export const Pollution = ({ airPollutionQuery }: any) => {
     <section className={pollutionBg[airpollution?.main?.aqi ?? 0]}>
       <div className="flex w-full flex-col items-center justify-center gap-2">
         <AirEmotion airQuality={airpollution?.main?.aqi} />
-        <h1 className="text-2xl font-bold text-white">
+        <h1 className="text-3xl font-bold text-white">
           {AirQuality.get(airpollution?.main?.aqi)?.message}
         </h1>
-        <div className="grid grid-cols-3 gap-2 whitespace-pre-line rounded-md border-2 px-4 py-5 text-xl font-bold uppercase text-white">
+        <div className="mt-5 grid grid-cols-3 gap-2 whitespace-pre-line rounded-md border-2 px-4 py-5 text-xl font-bold uppercase text-white">
           <h1>{`CO : ${airpollution?.components.co}`}</h1>
           <h1>{`NO : ${airpollution?.components.no}`}</h1>
           <h1>{`no2 : ${airpollution?.components.no2}`}</h1>
