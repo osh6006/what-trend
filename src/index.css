@@ -53,3 +53,12 @@ body {
 input {
   @apply my-1 border border-gray-300 p-4 outline-none;
 }
+
+.apexcharts-tooltip {
+  color: #333333;
+  background-color: #333333;
+}
+
+.apexcharts-menu {
+  color: #333333;
+}

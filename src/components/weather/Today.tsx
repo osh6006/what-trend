@@ -8,8 +8,6 @@ export const Today = () => {
   const today = weatherQuery?.data?.today;
   const city = weatherQuery?.data?.city;
 
-  console.log(weatherQuery);
-
   return (
     <div className="flex h-full w-full flex-col items-center justify-center gap-5 text-white">
       <div className="flex items-center gap-3">
@@ -44,7 +42,7 @@ export const Today = () => {
       <div className="text-xl capitalize text-gray-400">{`Feels like ${Math.floor(
         today?.combinationDay?.feels_like / today?.calDay?.length
       )} · ${today?.combinationDay?.weather[0]?.description}`}</div>
-      <TodayGraph />
+      <TodayGraph today={today} />
     </div>
   );
 };
