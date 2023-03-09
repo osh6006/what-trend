@@ -1,7 +1,11 @@
-import { useQuery, useQueryClient } from "react-query";
-import { getAirPolution, getRecentlyWeather } from "../api/openWeather";
+import { useMutation, useQuery, useQueryClient } from "react-query";
+import {
+  getAirPolution,
+  getGeolocation,
+  getRecentlyWeather,
+} from "../api/openWeather";
 import { calWeather } from "../util/weather";
-import useCurrentLocation from "./useCurrentLocation";
+import useCurrentLocation, { defaultLocation } from "./useCurrentLocation";
 
 const geolocationOptions = {
   enableHighAccuracy: true,
@@ -11,14 +15,15 @@ const geolocationOptions = {
 
 const TimeArr: string[] = ["06:00:00", "09:00:00", "15:00:00", "21:00:00"];
 
-export default function useWeather(): any {
+export default function useWeather(search?: any): any {
   const { location: currentLocation, error: currentError } =
     useCurrentLocation(geolocationOptions);
 
-  const queryClient = useQueryClient();
-
   const homeWeatherQuery = useQuery(
-    ["weatherThreeDays", currentLocation],
+    [
+      "weatherThreeDays",
+      (currentLocation && currentLocation) || defaultLocation,
+    ],
     () => getRecentlyWeather(currentLocation),
     {
       staleTime: 1000 * 60 * 5,
@@ -38,8 +43,9 @@ export default function useWeather(): any {
   );
 
   const airPollutionQuery = useQuery(
-    ["airPollution", currentLocation],
-    () => getAirPolution(currentLocation),
+    ["airPollution", (search && search) || currentLocation || defaultLocation],
+    () =>
+      getAirPolution((search && search) || currentLocation || defaultLocation),
     {
       staleTime: 1000 * 60 * 5,
       refetchOnWindowFocus: false,
@@ -47,8 +53,11 @@ export default function useWeather(): any {
   );
 
   const weatherQuery = useQuery(
-    ["weatherAll", currentLocation],
-    () => getRecentlyWeather(currentLocation),
+    ["weatherAll", (search && search) || currentLocation || defaultLocation],
+    () =>
+      getRecentlyWeather(
+        (search && search) || currentLocation || defaultLocation
+      ),
     {
       staleTime: 1000 * 60 * 5,
       refetchOnWindowFocus: false,
@@ -78,5 +87,22 @@ export default function useWeather(): any {
     }
   );
 
-  return { homeWeatherQuery, airPollutionQuery, weatherQuery };
+  const searchLocation = useMutation(
+    (location: string) => getGeolocation(location),
+    {
+      onSuccess: data => {
+        const searchlocation = {
+          latitude: data[0]?.lat,
+          longitude: data[0]?.lon,
+        };
+      },
+    }
+  );
+
+  return {
+    homeWeatherQuery,
+    airPollutionQuery,
+    weatherQuery,
+    searchLocation,
+  };
 }

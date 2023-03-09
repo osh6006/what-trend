@@ -1,5 +1,3 @@
-import { BsEmojiHeartEyes } from "react-icons/bs";
-
 interface AirQualityOpts {
   message: string;
 }

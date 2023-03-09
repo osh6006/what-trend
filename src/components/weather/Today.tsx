@@ -1,10 +1,12 @@
 import React from "react";
-import useWeather from "../../hooks/useWeather";
 import { getDayOfWeek, KALBIN } from "../../util/weather";
 import { TodayGraph } from "./TodayGraph";
 
-export const Today = () => {
-  const { weatherQuery } = useWeather();
+interface TodayProps {
+  weatherQuery: any;
+}
+
+export const Today = ({ weatherQuery }: TodayProps) => {
   const today = weatherQuery?.data?.today;
   const city = weatherQuery?.data?.city;
 

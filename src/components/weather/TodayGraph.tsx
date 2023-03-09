@@ -3,8 +3,6 @@ import Chart from "react-apexcharts";
 import { KALBIN } from "../../util/weather";
 
 export const TodayGraph = ({ today }: any) => {
-  console.log(today);
-
   return (
     <div className="w-[80%]">
       <Chart
@@ -13,7 +11,7 @@ export const TodayGraph = ({ today }: any) => {
           {
             name: "오늘의 기온",
             data: today?.calDay.map((data: any) => {
-              return Math.floor(data?.main.temp - KALBIN);
+              return Math.floor(data?.main.temp - KALBIN) + "°C";
             }),
           },
         ]}

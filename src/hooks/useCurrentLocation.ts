@@ -32,6 +32,11 @@ interface Position {
   timestamp: number;
 }
 
+export const defaultLocation: Location = {
+  latitude: 37.541,
+  longitude: 126.986,
+};
+
 const useCurrentLocation = (options: GeolocationOpts = {}) => {
   // location 정보 저장
   const [location, setLocation] = useState<Location>();

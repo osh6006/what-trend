@@ -7,6 +7,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Weather from "./pages/Weather";
+import { SearchWeather } from "./pages/weather/SearchWeather";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "/weather", element: <Weather /> },
+      { path: "/weather/:id", element: <SearchWeather /> },
       { path: "/humor", element: <Weather /> },
       { path: "/ott", element: <Weather /> },
       { path: "/sns", element: <Weather /> },

@@ -29,3 +29,16 @@ export async function getAirPolution(location: Location | undefined) {
   }
   return [];
 }
+
+export async function getGeolocation(location: string) {
+  console.log(location);
+
+  if (location) {
+    const res = await fetch(
+      `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=${process.env.REACT_APP_OPENWEATHER_API_KEY}`,
+      requestOptions
+    );
+    return res.json();
+  }
+  return [];
+}

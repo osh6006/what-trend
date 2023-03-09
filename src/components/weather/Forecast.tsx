@@ -1,5 +1,4 @@
 import { useState } from "react";
-import useWeather from "../../hooks/useWeather";
 import { Pollution } from "./Pollution";
 import { Week } from "./Week";
 
@@ -8,8 +7,15 @@ const passive: string =
 const active: string =
   "cursor-pointer select-none text-black after:-m-3 after:block after:text-center after:content-['•'] after:text-3xl";
 
-export const Forecast = () => {
-  const { weatherQuery, airPollutionQuery } = useWeather();
+interface ForeCastProps {
+  weatherQuery: any;
+  airPollutionQuery: any;
+}
+
+export const Forecast = ({
+  weatherQuery,
+  airPollutionQuery,
+}: ForeCastProps) => {
   const [weatherTab, setWeatherTab] = useState<string>("week");
 
   const handleTab = (e: React.MouseEvent, title: string): void => {
