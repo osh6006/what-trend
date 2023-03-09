@@ -10,14 +10,10 @@ export const SearchWeather = () => {
   const { state } = useLocation();
   const { weatherQuery, airPollutionQuery } = useWeather(state);
 
-  console.log(weatherQuery);
-  console.log(airPollutionQuery);
-
   return (
     <>
       <main className="ml-0 flex h-full w-full flex-1 flex-col py-4 sm:ml-72 lg:ml-96 lg:flex-row lg:pr-10">
-        {weatherQuery.isLoading && <Loading />}
-        {airPollutionQuery.isLoading && <Loading />}
+        {weatherQuery.isLoading && airPollutionQuery.isLoading && <Loading />}
         {airPollutionQuery.isLoading || weatherQuery.isLoading || (
           <>
             <section className="w-full p-5 shadow-lg lg:w-6/12 lg:min-w-[500px]">
