@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import useOTT from "../../hooks/useOTT";
+import { Loading } from "../common/Loading";
 import { RankItem } from "./RankItem";
 
 interface Tab {
@@ -41,30 +42,37 @@ export const OTTTabs = ({ tabs }: TabsProps) => {
         </ul>
       </div>
       {/* contents */}
-      <ul className="mt-3 w-full rounded-b-lg border shadow-md">
+      <ul className="relative mt-3 min-h-[500px] w-full rounded-b-lg border shadow-md">
         <li className="flex w-full gap-5 bg-black px-5 py-3 text-white">
           <div>Rank</div>
           <div className="flex-1 text-center">Title</div>
           <div>Points</div>
         </li>
-        {tabs &&
-        tabs[activeTab].title === "Netflix" &&
-        (homeNeflixQuery?.data?.movieTop10?.length ?? 0) > 0
-          ? homeNeflixQuery?.data?.movieTop10?.map(el => (
-              <RankItem
-                key={el.rank}
-                title={el.title}
-                rank={el.rank}
-                point={el.point}
-              />
-            ))
-          : tabs &&
-            tabs[activeTab].title === "Netflix" && (
-              <div className="mt-[50%] h-72 text-center text-xl text-gray-400">
-                서비스 점검중
-              </div>
-            )}
-        {tabs &&
+        {tabs && homeNeflixQuery.isLoading ? (
+          <Loading />
+        ) : tabs &&
+          tabs[activeTab].title === "Netflix" &&
+          (homeNeflixQuery?.data?.movieTop10?.length ?? 0) > 0 ? (
+          homeNeflixQuery?.data?.movieTop10?.map(el => (
+            <RankItem
+              key={el.rank}
+              title={el.title}
+              rank={el.rank}
+              point={el.point}
+            />
+          ))
+        ) : (
+          tabs &&
+          tabs[activeTab].title === "Netflix" && (
+            <div className="mt-[50%] h-72 text-center text-xl text-gray-400">
+              서비스 점검중
+            </div>
+          )
+        )}
+        {tabs && homeDisneyQuery.isLoading ? (
+          <Loading />
+        ) : (
+          tabs &&
           tabs[activeTab].title === "Disney +" &&
           homeDisneyQuery?.data?.movieTop10?.map(el => (
             <RankItem
@@ -73,8 +81,12 @@ export const OTTTabs = ({ tabs }: TabsProps) => {
               rank={el.rank}
               point={el.point}
             />
-          ))}
-        {tabs &&
+          ))
+        )}
+        {tabs && homeAmazonQuery.isLoading ? (
+          <Loading />
+        ) : (
+          tabs &&
           tabs[activeTab].title === "Amazon P" &&
           homeAmazonQuery?.data?.movieTop10?.map(el => (
             <RankItem
@@ -83,7 +95,8 @@ export const OTTTabs = ({ tabs }: TabsProps) => {
               rank={el.rank}
               point={el.point}
             />
-          ))}
+          ))
+        )}
       </ul>
     </>
   );
