@@ -5,6 +5,7 @@ import {
   getCity,
   getGeolocation,
   getRecentlyWeather,
+  removeCity,
 } from "../api/openWeather";
 import { calWeather, City } from "../util/weather";
 import useCurrentLocation, { defaultLocation } from "./useCurrentLocation";
@@ -98,6 +99,14 @@ export default function useWeather(search?: any): any {
       queryClient.invalidateQueries("getCity");
     },
   });
+  const removeCityFromStorage = useMutation(
+    (name: string) => removeCity(name),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("getCity");
+      },
+    }
+  );
 
   const getCityFromStorage = useQuery(["getCity"], () => getCity());
 
@@ -108,5 +117,6 @@ export default function useWeather(search?: any): any {
     searchLocation,
     getCityFromStorage,
     addCitytoStorage,
+    removeCityFromStorage,
   };
 }

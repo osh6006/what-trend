@@ -26,7 +26,7 @@ export default function Weather() {
                 airPollutionQuery={airPollutionQuery}
               />
             </section>
-            <section className="w-full overflow-hidden border-r-2 bg-slate-900 p-5 shadow-lg lg:w-[45%] lg:min-w-[600px] 2xl:rounded-r-2xl">
+            <section className="w-full overflow-hidden border-r-2 bg-secondaryBg p-5 shadow-lg lg:w-[45%] lg:min-w-[600px] 2xl:rounded-r-2xl">
               <Today weatherQuery={weatherQuery} />
             </section>
           </>

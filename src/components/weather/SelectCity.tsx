@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { IoMdClose } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import useWeather from "../../hooks/useWeather";
 import Modal from "react-modal";
@@ -10,7 +11,12 @@ interface FormData {
 }
 
 export const SelectCity = () => {
-  const { searchLocation, addCitytoStorage, getCityFromStorage } = useWeather();
+  const {
+    searchLocation,
+    addCitytoStorage,
+    getCityFromStorage,
+    removeCityFromStorage,
+  } = useWeather();
   const navigate = useNavigate();
   const { modalIsOpen, afterOpenModal, closeModal, customStyles, openModal } =
     useModal();
@@ -39,7 +45,6 @@ export const SelectCity = () => {
     // search start!
     searchLocation.mutate(city, {
       onSuccess: (data: any) => {
-        console.log(data[0].name);
         navigate(`/weather/${data[0]?.name}`, {
           state: { latitude: data[0]?.lat, longitude: data[0]?.lon },
         });
@@ -66,9 +71,7 @@ export const SelectCity = () => {
             value={formData.city}
             onChange={handleInputChange}
           >
-            <option selected value="">
-              Choose The City
-            </option>
+            <option value="">Choose The City</option>
             {CityOpts.map((data: City) => (
               <option value={data.city} key={data.city}>
                 {data.city}
@@ -88,12 +91,18 @@ export const SelectCity = () => {
         {getCityFromStorage?.data.map((el: City, i: number) => (
           <li
             onClick={e => {
-              cardClick(e, el.city);
+              cardClick(e, el?.city);
             }}
-            className="flex h-full w-full basis-32 cursor-pointer flex-col items-center justify-center rounded-xl border bg-emerald-900 py-2 font-bold text-white transition-all hover:scale-110 xl:w-10 xl:py-0"
+            className="relative flex h-full w-full basis-32 cursor-pointer flex-col items-center justify-center rounded-xl border bg-black py-2 font-bold text-white transition-all hover:scale-110 hover:bg-secondaryBg xl:w-10 xl:py-0"
             key={i}
           >
-            {el.city}
+            {el?.city}
+            <button
+              className="absolute top-2 right-1 p-2 "
+              onClick={() => removeCityFromStorage.mutate(el?.city)}
+            >
+              <IoMdClose className="h-7 w-7" />
+            </button>
           </li>
         ))}
         <button

@@ -63,3 +63,15 @@ export function getCity(): any {
     );
   }
 }
+
+export async function removeCity(name: string) {
+  if (name !== "" && name) {
+    const getedcity = localStorage.getItem("city");
+    const parsedCity = getedcity ? JSON.parse(getedcity) : [];
+
+    if (parsedCity.length > 0) {
+      const removeCity = parsedCity.filter((data: City) => data.city !== name);
+      localStorage.setItem("city", JSON.stringify(removeCity));
+    }
+  }
+}
