@@ -2,6 +2,7 @@ import { HiOutlineSearch } from "react-icons/hi";
 import { useState } from "react";
 import useWeather from "../../hooks/useWeather";
 import { useNavigate } from "react-router-dom";
+import { Loading } from "../common/Loading";
 
 export const Search = () => {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ export const Search = () => {
   const handlechange = (e: React.FormEvent<HTMLInputElement>): void => {
     setSearch(e.currentTarget.value);
   };
+
   const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     if (search !== "") {
@@ -41,9 +43,17 @@ export const Search = () => {
       <HiOutlineSearch className="absolute left-1 top-3 mt-5 h-5 text-4xl" />
       <button
         type="submit"
-        className=" h-full rounded-lg bg-black py-4 px-3 transition-colors hover:bg-secondaryBg"
+        className="relative flex h-full min-h-[50px] min-w-[50px] items-center justify-center rounded-lg bg-black transition-colors hover:bg-secondaryBg sm:px-3 sm:py-2 "
       >
-        Search
+        {searchLocation.isLoading && <Loading size="sm" />}
+        {searchLocation.isLoading || (
+          <>
+            <div className="hidden sm:block">Search</div>
+            <div className="sm:hidden">
+              <HiOutlineSearch />
+            </div>
+          </>
+        )}
       </button>
     </form>
   );

@@ -1,10 +1,12 @@
 import { useMutation, useQuery, useQueryClient } from "react-query";
 import {
+  addCity,
   getAirPolution,
+  getCity,
   getGeolocation,
   getRecentlyWeather,
 } from "../api/openWeather";
-import { calWeather } from "../util/weather";
+import { calWeather, City } from "../util/weather";
 import useCurrentLocation, { defaultLocation } from "./useCurrentLocation";
 
 const geolocationOptions = {
@@ -16,8 +18,8 @@ const geolocationOptions = {
 const TimeArr: string[] = ["06:00:00", "09:00:00", "15:00:00", "21:00:00"];
 
 export default function useWeather(search?: any): any {
-  const { location: currentLocation, error: currentError } =
-    useCurrentLocation(geolocationOptions);
+  const { location: currentLocation } = useCurrentLocation(geolocationOptions);
+  const queryClient = useQueryClient();
 
   const homeWeatherQuery = useQuery(
     [
@@ -87,22 +89,24 @@ export default function useWeather(search?: any): any {
     }
   );
 
-  const searchLocation = useMutation(
-    (location: string) => getGeolocation(location),
-    {
-      onSuccess: data => {
-        const searchlocation = {
-          latitude: data[0]?.lat,
-          longitude: data[0]?.lon,
-        };
-      },
-    }
+  const searchLocation = useMutation((location: string) =>
+    getGeolocation(location)
   );
+
+  const addCitytoStorage = useMutation((city: City) => addCity(city), {
+    onSuccess: () => {
+      queryClient.invalidateQueries("getCity");
+    },
+  });
+
+  const getCityFromStorage = useQuery(["getCity"], () => getCity());
 
   return {
     homeWeatherQuery,
     airPollutionQuery,
     weatherQuery,
     searchLocation,
+    getCityFromStorage,
+    addCitytoStorage,
   };
 }

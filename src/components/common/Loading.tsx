@@ -1,4 +1,23 @@
-export const Loading = () => {
+interface LoadingProps {
+  size?: "sm";
+}
+
+interface Sizes {
+  [key: string]: string;
+}
+
+const sizes: Sizes = {
+  sm: "w-5 h-5",
+  nomal: "w-8 h-8",
+};
+
+const commonClass = "animate-spin fill-blue-600 text-gray-200";
+
+const loadingClass = (size: string) => {
+  return `${sizes[size]} ${commonClass}`;
+};
+
+export const Loading = ({ size }: LoadingProps) => {
   return (
     <div
       role="status"
@@ -6,7 +25,7 @@ export const Loading = () => {
     >
       <svg
         aria-hidden="true"
-        className="mr-2 h-8 w-8 animate-spin fill-blue-600 text-gray-200"
+        className={size ? loadingClass("sm") : loadingClass("nomal")}
         viewBox="0 0 100 101"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"

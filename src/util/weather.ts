@@ -2,6 +2,34 @@ interface AirQualityOpts {
   message: string;
 }
 
+export interface City {
+  city: string;
+}
+
+export const CityOpts: City[] = [
+  {
+    city: "Seoul",
+  },
+  {
+    city: "Busan",
+  },
+  {
+    city: "Daegu",
+  },
+  {
+    city: "Ulsan",
+  },
+  {
+    city: "Incheon",
+  },
+  {
+    city: "Gwangju",
+  },
+  {
+    city: "Daejeon",
+  },
+];
+
 export const KALBIN = 273.15;
 
 export const AirQuality = new Map<any, AirQualityOpts>();
