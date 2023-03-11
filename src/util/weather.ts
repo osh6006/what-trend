@@ -6,6 +6,8 @@ export interface City {
   city: string;
 }
 
+export const week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+
 export const CityOpts: City[] = [
   {
     city: "Seoul",
@@ -85,7 +87,6 @@ export function calWeather(array: any, dayAfter: number): any {
 
 export function getDayOfWeek(day: string): string {
   //ex) getDayOfWeek('2022-06-13')
-  const week = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
   const dayOfWeek = week[new Date(day).getDay()];
 
   if (day === "today") {

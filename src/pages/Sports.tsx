@@ -1,5 +1,6 @@
 import React from "react";
+import { SportsLayout } from "../components/sports/SportsLayout";
 
 export default function Sports() {
-  return <div>Sports</div>;
+  return <SportsLayout>asdf</SportsLayout>;
 }

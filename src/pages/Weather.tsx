@@ -3,6 +3,7 @@ import { Forecast } from "../components/weather/Forecast";
 import { Search } from "../components/weather/Search";
 import { SelectCity } from "../components/weather/SelectCity";
 import { Today } from "../components/weather/Today";
+import { WeatherLayout } from "../components/weather/WeatherLayout";
 import { WeatherContextProvider } from "../context/WeatherContext";
 import useWeather from "../hooks/useWeather";
 
@@ -11,7 +12,7 @@ export default function Weather() {
 
   return (
     <WeatherContextProvider>
-      <main className="ml-0 flex h-full w-full flex-1 flex-col py-4 sm:ml-72 lg:ml-96 lg:flex-row lg:pr-10">
+      <WeatherLayout>
         {weatherQuery.isLoading && airPollutionQuery.isLoading && <Loading />}
         {airPollutionQuery.isLoading || weatherQuery.isLoading || (
           <>
@@ -31,7 +32,7 @@ export default function Weather() {
             </section>
           </>
         )}
-      </main>
+      </WeatherLayout>
     </WeatherContextProvider>
   );
 }

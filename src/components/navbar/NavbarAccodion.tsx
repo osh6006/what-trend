@@ -13,7 +13,7 @@ interface AccodionProps {
 const passiveClassName =
   "flex flex relative w-full cursor-pointer items-center justify-start gap-4 py-3 sm:font-bold transition-colors duration-300 lg:hover:bg-primaryHover";
 
-export const activeClassName =
+const activeClassName =
   "flex relative w-full cursor-pointer items-center justify-start gap-4 py-3 font-bold transition-colors bg-primaryHover";
 
 export const NavbarAccodion = ({ title, path, children }: AccodionProps) => {

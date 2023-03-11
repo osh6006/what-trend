@@ -10,6 +10,7 @@ import Weather from "./pages/Weather";
 import { SearchWeather } from "./pages/weather/SearchWeather";
 import Community from "./pages/Community";
 import Sports from "./pages/Sports";
+import Soccer from "./pages/sports/Soccer";
 
 const router = createBrowserRouter([
   {
@@ -21,8 +22,7 @@ const router = createBrowserRouter([
       { path: "/weather", element: <Weather /> },
       { path: "/weather/:id", element: <SearchWeather /> },
       { path: "/sports", element: <Sports /> },
-      { path: "/sports/soccer", element: <Sports /> },
-      { path: "/sports/soccer/", element: <Sports /> },
+      { path: "/sports/soccer/", element: <Soccer /> },
       { path: "/humor", element: <Community /> },
       { path: "/ott", element: <Weather /> },
       { path: "/sns", element: <Weather /> },

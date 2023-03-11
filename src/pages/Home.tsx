@@ -1,3 +1,4 @@
+import Layout from "../components/common/Layout";
 import { HomeOTT } from "../components/home/HomeOTT";
 import { HumorRank } from "../components/home/HumorRank";
 import MoreTrend from "../components/home/MoreTrend";
@@ -6,7 +7,7 @@ import { TodayWeather } from "../components/home/TodayWeather";
 export default function Home() {
   return (
     <>
-      <main className="ml-0 flex h-screen w-full flex-1 flex-col  py-4 sm:ml-72 lg:ml-96 lg:flex-row lg:pr-10">
+      <Layout>
         <section className="relative w-full bg-white p-5 shadow-lg lg:w-5/12 lg:min-w-[500px]">
           <TodayWeather />
           <HumorRank />
@@ -15,7 +16,7 @@ export default function Home() {
           <HomeOTT />
           <MoreTrend />
         </section>
-      </main>
+      </Layout>
       {/* <div className="absolute bottom-5 right-1 h-20 w-20 rounded-full bg-slate-700"></div> */}
     </>
   );

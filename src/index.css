@@ -8,17 +8,17 @@
   }
 }
 #root {
-  @apply flex flex-col overflow-x-hidden  bg-primaryBg sm:flex-row;
+  @apply flex flex-col overflow-x-hidden bg-primaryBg sm:flex-row;
 }
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply overflow-y-scroll bg-primaryBg;
+  @apply bg-primaryBg;
 }
 
 ::-webkit-scrollbar {
-  width: 14px;
-  height: 14px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-button {
   width: 0px;
