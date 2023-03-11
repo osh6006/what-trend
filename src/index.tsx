@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import NotFound from "./pages/NotFound";
 import Weather from "./pages/Weather";
 import { SearchWeather } from "./pages/weather/SearchWeather";
+import Community from "./pages/Community";
 
 const router = createBrowserRouter([
   {
@@ -18,7 +19,7 @@ const router = createBrowserRouter([
       { index: true, element: <Home /> },
       { path: "/weather", element: <Weather /> },
       { path: "/weather/:id", element: <SearchWeather /> },
-      { path: "/humor", element: <Weather /> },
+      { path: "/humor", element: <Community /> },
       { path: "/ott", element: <Weather /> },
       { path: "/sns", element: <Weather /> },
     ],

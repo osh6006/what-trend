@@ -2,6 +2,7 @@ import React from "react";
 import { IoMdClose } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
+import { NavbarAccodion } from "./NavbarAccodion";
 
 interface NavMobileType {
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
@@ -57,6 +58,9 @@ export const NavMobileMenu = ({ setIsOpen, isOpen }: NavMobileType) => {
       >
         Weather
       </li>
+      <NavbarAccodion title="Sports" path="/Sports">
+        <div className="">test~</div>
+      </NavbarAccodion>
       <li className={location.pathname === "/humor" ? commonPathClass : ""}>
         Humor
       </li>
@@ -69,9 +73,7 @@ export const NavMobileMenu = ({ setIsOpen, isOpen }: NavMobileType) => {
       <li className={location.pathname === "/shopping" ? commonPathClass : ""}>
         Shopping
       </li>
-      <li className={location.pathname === "/sports" ? commonPathClass : ""}>
-        Sports
-      </li>
+
       <li className={location.pathname === "/music" ? commonPathClass : ""}>
         Music
       </li>

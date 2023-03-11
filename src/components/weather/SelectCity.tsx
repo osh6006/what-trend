@@ -106,11 +106,11 @@ export const SelectCity = () => {
           </li>
         ))}
         <button
-          onClick={() => {}}
+          onClick={openModal}
           className="flex h-full w-full flex-col items-center justify-center rounded-xl border-2 text-gray-400 transition-colors hover:border-gray-700 hover:text-gray-700 xl:w-auto xl:px-6 xl:py-5"
         >
           <div className="text-3xl">+</div>
-          <div onClick={openModal}>Add City</div>
+          <div>Add City</div>
         </button>
       </ul>
     </div>
