@@ -1,5 +1,6 @@
 import React from "react";
 import { IoMdClose } from "react-icons/io";
+import { NavLink } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { NavbarAccodion } from "./NavbarAccodion";
@@ -58,8 +59,16 @@ export const NavMobileMenu = ({ setIsOpen, isOpen }: NavMobileType) => {
       >
         Weather
       </li>
-      <NavbarAccodion title="Sports" path="/Sports">
-        <div className="">test~</div>
+      <NavbarAccodion title="Sports" path="/sports">
+        <NavLink
+          onClick={() => {
+            setIsOpen(!isOpen);
+          }}
+          className={({ isActive }) => (isActive ? commonPathClass : "")}
+          to="/sports/soccer"
+        >
+          Football
+        </NavLink>
       </NavbarAccodion>
       <li className={location.pathname === "/humor" ? commonPathClass : ""}>
         Humor

@@ -1,6 +1,12 @@
-import React from "react";
+import { NavLink } from "react-router-dom";
 import { NavbarAccodion } from "./NavbarAccodion";
 import { NavbarLink } from "./NavbarLink";
+
+const activeClassName =
+  "w-full text-center cursor-pointer gap-4 py-3 font-bold transition-colors bg-primaryHover";
+
+const passiveClassName =
+  "w-full text-center cursor-pointer gap-4 py-3 font-bold sm:font-bold transition-colors duration-300 lg:hover:bg-primaryHover";
 
 export const NavbarDeskTopMenu = () => {
   return (
@@ -8,7 +14,14 @@ export const NavbarDeskTopMenu = () => {
       <NavbarLink title="Home" path="/" />
       <NavbarLink title="Weather" path="/weather" />
       <NavbarAccodion title="Sports" path="/sports">
-        <div className="">test~</div>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? activeClassName : passiveClassName
+          }
+          to="/sports/soccer"
+        >
+          Football
+        </NavLink>
       </NavbarAccodion>
       <NavbarAccodion title="Community" path="/humor">
         <div className="">test~</div>
