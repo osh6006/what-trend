@@ -1,4 +1,4 @@
-import { teamRank } from "../../api/sports/soccer";
+import { teamRank } from "../../api/sports/soccerTeam";
 import { v4 as uuidv4 } from "uuid";
 import { Recently } from "./Recently";
 

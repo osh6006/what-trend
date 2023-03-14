@@ -13,7 +13,7 @@ module.exports = function (app) {
   );
   appUse(
     app,
-    "/en/primera-división/table/34pl8szyvrbwcmfkuocjm3r6t",
+    "/en/primera-divisi%C3%B3n/table/34pl8szyvrbwcmfkuocjm3r6t",
     "https://www.goal.com"
   );
   appUse(

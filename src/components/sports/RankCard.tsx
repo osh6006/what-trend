@@ -1,4 +1,4 @@
-import { teamRank } from "../../api/sports/soccer";
+import { teamRank } from "../../api/sports/soccerTeam";
 import { Recently } from "./Recently";
 
 interface RankCardProps {
