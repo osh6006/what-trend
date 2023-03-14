@@ -6,6 +6,8 @@ interface RecentlyProps {
 }
 
 export const Recently = ({ word, kind }: RecentlyProps) => {
+  console.log(word);
+
   return (
     <>
       {word === "W" && kind === "card" && (

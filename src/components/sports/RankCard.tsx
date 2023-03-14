@@ -6,8 +6,6 @@ interface RankCardProps {
 }
 
 export const RankCard = ({ teamInfo }: RankCardProps) => {
-  console.log(teamInfo);
-
   return (
     <div className="flex max-w-sm flex-col items-center rounded-md px-10 py-2 text-xl shadow-xl">
       <img
