@@ -4,14 +4,13 @@ import { Recently } from "./Recently";
 interface RankTableProps {
   teamInfo?: teamRank[];
 }
+
 const th = "py-4 px-6 sticky top-0 bg-gray-200";
 const td = "whitespace-nowrap py-3 px-6 ";
 
 export const RankTable = ({ teamInfo }: RankTableProps) => {
-  console.log(teamInfo);
-
   return (
-    <div className="mt-8 overflow-auto rounded-md ">
+    <div className="mt-8 hidden overflow-auto rounded-md lg:block ">
       <table className="w-full table-auto text-center font-bold">
         <thead>
           <tr className="bg-gray-200 text-sm uppercase leading-normal text-gray-600">
