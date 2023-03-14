@@ -1,8 +1,17 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
 
-interface teamRank {
-  [key: string]: string;
+export interface teamRank {
+  draw: string;
+  img: string;
+  form: string;
+  gd: string;
+  lose: string;
+  name: string;
+  rank: string;
+  play: string;
+  point: string;
+  win: string;
 }
 
 async function fetchSoccerTeamData(kind?: string) {
@@ -21,27 +30,41 @@ export const soccerTeamParsing = async () => {
   const teamRankArr: teamRank[] = [];
 
   $ranks.each((idx, node) => {
-    const rank = $(node).children().first().text();
-    const img = $(node)
-      .find(".widget-match-standings__team > a > img")
-      .attr("src");
+    const rank = $(node).children().first().text().trim();
+    const img = $(node).data("team-id");
     const name = $(node)
       .find(
         ".widget-match-standings__team > .widget-match-standings__link > .widget-match-standings__team--full-name"
       )
-      .text();
-    const play = $(node).find(".widget-match-standings__matches-played").text();
-    const win = $(node).find(".widget-match-standings__matches-won").text();
-    const draw = $(node).find(".widget-match-standings__matches-drawn").text();
-    const lose = $(node).find(".widget-match-standings__matches-lost").text();
-    const gd = $(node).find(".widget-match-standings__goals-diff").text();
-    const point = $(node).find(".widget-match-standings__pts").text();
+      .text()
+      .trim();
+    const play = $(node)
+      .find(".widget-match-standings__matches-played")
+      .text()
+      .trim();
+    const win = $(node)
+      .find(".widget-match-standings__matches-won")
+      .text()
+      .trim();
+    const draw = $(node)
+      .find(".widget-match-standings__matches-drawn")
+      .text()
+      .trim();
+    const lose = $(node)
+      .find(".widget-match-standings__matches-lost")
+      .text()
+      .trim();
+    const gd = $(node)
+      .find(".widget-match-standings__goals-diff")
+      .text()
+      .trim();
+    const point = $(node).find(".widget-match-standings__pts").text().trim();
     const form: string[] = [];
 
     $(node)
       .find(".widget-match-standings__last-five > a")
       .each((i, n) => {
-        form.push($(n).text());
+        form.push($(n).text().trim());
       });
 
     if (img) {
@@ -60,5 +83,5 @@ export const soccerTeamParsing = async () => {
     }
   });
 
-  return true;
+  return teamRankArr;
 };

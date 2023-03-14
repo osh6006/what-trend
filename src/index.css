@@ -62,3 +62,9 @@ input {
 .apexcharts-menu {
   color: #333333;
 }
+
+img {
+  image-rendering: -webkit-optimize-contrast;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
