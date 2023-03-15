@@ -12,6 +12,7 @@ export interface teamRank {
   play: string;
   point: string;
   win: string;
+  winrate?: number;
 }
 
 async function fetchSoccerTeamData(kind: string, key: string) {
@@ -78,6 +79,7 @@ async function commonParsing(kind: string, key: string) {
         gd,
         point,
         form: form.join(""),
+        winrate: Math.floor((+win * 1 + (+draw + 0.5)) / +play),
       });
     }
   });
@@ -106,5 +108,17 @@ export const ligue1LeagueParsing = async (): Promise<teamRank[]> => {
 };
 
 export const allLeagueParsing = async (): Promise<teamRank[]> => {
-  return commonParsing("ligue-1", "dm5ka0os1e3dxcp3vh05kmp33");
+  const premier = await commonParsing(
+    "premier-league",
+    "2kwbbcootiqqgmrzs6o5inle5"
+  );
+  const seriea = await commonParsing("serie-a", "1r097lpxe0xn03ihb7wi98kao");
+  const primera = await commonParsing(
+    "primera-divisi%C3%B3n",
+    "34pl8szyvrbwcmfkuocjm3r6t"
+  );
+  const bundes = await commonParsing("bundesliga", "6by3h89i2eykc341oz7lv1ddd");
+  const ligue1 = await commonParsing("ligue-1", "dm5ka0os1e3dxcp3vh05kmp33");
+
+  return [];
 };

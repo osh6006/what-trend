@@ -7,6 +7,7 @@ interface RankTableProps {
 
 const th = "py-4 px-6 sticky top-0 bg-gray-200";
 const td = "whitespace-nowrap py-3 px-6 ";
+const tdimg = `${td} flex item-center gap-3`;
 
 export const RankTable = ({ teamInfo }: RankTableProps) => {
   return (
@@ -29,7 +30,13 @@ export const RankTable = ({ teamInfo }: RankTableProps) => {
           {teamInfo?.map((el: teamRank, i: number) => (
             <tr key={i} className="border-b border-gray-200 hover:bg-gray-100">
               <td className={td}>{el.rank}</td>
-              <td className={td}>{el.name}</td>
+              <td className={tdimg}>
+                <img
+                  src={`https://secure.cache.images.core.optasports.com/soccer/teams/30x30/uuid_${el?.img}.png`}
+                  alt="logo"
+                />
+                <span>{el.name}</span>
+              </td>
               <td className={td}>{el.play}</td>
               <td className={td}>{el.win}</td>
               <td className={td}>{el.draw}</td>
