@@ -7,7 +7,8 @@ interface RankTableProps {
 
 const th = "py-4 px-6 sticky top-0 bg-gray-200";
 const td = "whitespace-nowrap py-3 px-6 ";
-const tdimg = `${td} flex item-center gap-3`;
+const tdimg = `${td} flex items-center gap-3 text-center`;
+const thimg = `${th} text-left`;
 
 export const RankTable = ({ teamInfo }: RankTableProps) => {
   return (
@@ -16,7 +17,7 @@ export const RankTable = ({ teamInfo }: RankTableProps) => {
         <thead>
           <tr className="bg-gray-200 text-sm uppercase leading-normal text-gray-600">
             <th className={th}>Rank</th>
-            <th className={th}>name</th>
+            <th className={thimg}>name</th>
             <th className={th}>Matches</th>
             <th className={th}>Win</th>
             <th className={th}>Draw</th>

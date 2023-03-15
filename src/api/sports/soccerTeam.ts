@@ -12,7 +12,7 @@ export interface teamRank {
   play: string;
   point: string;
   win: string;
-  winrate?: number;
+  winrate: number;
 }
 
 async function fetchSoccerTeamData(kind: string, key: string) {
@@ -79,7 +79,7 @@ async function commonParsing(kind: string, key: string) {
         gd,
         point,
         form: form.join(""),
-        winrate: Math.floor((+win * 1 + (+draw + 0.5)) / +play),
+        winrate: Math.floor(((+win * 1 + (+draw + 0.5)) / +play) * 100),
       });
     }
   });
@@ -120,5 +120,13 @@ export const allLeagueParsing = async (): Promise<teamRank[]> => {
   const bundes = await commonParsing("bundesliga", "6by3h89i2eykc341oz7lv1ddd");
   const ligue1 = await commonParsing("ligue-1", "dm5ka0os1e3dxcp3vh05kmp33");
 
-  return [];
+  const allLeague = premier.concat(seriea, primera, bundes, ligue1);
+  allLeague.sort((a: teamRank, b: teamRank) => {
+    return +b.winrate + +b.point + +b.gd - (+a.winrate + +a.point + +b.gd);
+  });
+  allLeague.forEach((el, i: number) => {
+    el.rank = i + 1 + "";
+  });
+
+  return allLeague;
 };

@@ -1,4 +1,5 @@
 import {
+  allLeagueParsing,
   bundesligaLeagueParsing,
   ligue1LeagueParsing,
   premierLeagueParsing,
@@ -78,8 +79,19 @@ export default function useSoccer(kind?: string) {
       },
     }
   );
+
+  const allLeagueQuery = useQuery(["allLeague"], () => allLeagueParsing(), {
+    staleTime: 1000 * 60 * 5,
+    refetchOnWindowFocus: false,
+    select: (data: teamRank[]) => {
+      const top3 = data.filter((el: any, i: number) => i < 3);
+      const rest = data.filter((el: any, i: number) => i >= 3 && i <= 20);
+      return { top3, rest };
+    },
+  });
+
   if (kind === "all") {
-    return premierLeagueQuery;
+    return allLeagueQuery;
   }
   if (kind === "premier") {
     return premierLeagueQuery;
