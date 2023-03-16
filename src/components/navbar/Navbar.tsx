@@ -16,7 +16,9 @@ export const Navbar = () => {
       <header className="fixed hidden h-full w-72 select-none justify-center p-10 font-normal sm:flex lg:w-96">
         <div className="flex w-full flex-col items-center gap-3">
           <img src="/logo.png" alt="logo" className="aspect-square w-7" />
-          <h1 className="font-mono text-3xl font-semibold">What's Trends?</h1>
+          <h1 className="whitespace-nowrap font-mono text-3xl font-semibold">
+            What's Trends?
+          </h1>
           <NavbarDeskTopMenu />
         </div>
       </header>

@@ -3,6 +3,7 @@ import { Recently } from "./Recently";
 
 interface RankCardProps {
   teamInfo: teamRank;
+  playerInfo?: any;
 }
 
 export const RankCard = ({ teamInfo }: RankCardProps) => {

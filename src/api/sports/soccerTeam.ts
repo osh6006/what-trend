@@ -17,7 +17,9 @@ export interface teamRank {
 
 async function fetchSoccerTeamData(kind: string, key: string) {
   const API_URL = `/en/${kind}/table/${key}`;
-  const data = await axios.get(API_URL);
+  const data = await axios.get(API_URL, {
+    withCredentials: true,
+  });
   return data;
 }
 

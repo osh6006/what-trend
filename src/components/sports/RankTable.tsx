@@ -3,6 +3,7 @@ import { Recently } from "./Recently";
 
 interface RankTableProps {
   teamInfo?: teamRank[];
+  playerInfo?: any;
 }
 
 const th = "py-4 px-6 sticky top-0 bg-gray-200";

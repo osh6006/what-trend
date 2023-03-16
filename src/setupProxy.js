@@ -31,6 +31,10 @@ module.exports = function (app) {
     "/en/ligue-1/table/dm5ka0os1e3dxcp3vh05kmp33",
     "https://www.goal.com"
   );
+
+  appUse(app, "/competition/rankings/", "https://www.besoccer.com");
+
+  appUse(app, "/player", "https://www.besoccer.com");
 };
 
 function appUse(app, endpoint, target) {

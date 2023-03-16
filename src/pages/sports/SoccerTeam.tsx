@@ -6,7 +6,7 @@ import useSoccer from "../../hooks/sports/useSoccerTeam";
 import { v4 as uuidv4 } from "uuid";
 import { teamRank } from "../../api/sports/soccerTeam";
 import { RankMobile } from "../../components/sports/RankMobile";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Loading } from "../../components/common/Loading";
 
 export default function SoccerTeam() {
@@ -37,7 +37,7 @@ export default function SoccerTeam() {
             <div>
               <select
                 onChange={handleOptionChange}
-                className="mt-3 block rounded-md border border-gray-300 bg-gray-50 px-2 py-3 text-lg focus:border-gray-500 focus:outline-none focus:ring-gray-500  "
+                className="mx-auto mt-3 block rounded-md border border-gray-300 bg-gray-50 px-2 py-3 text-lg focus:border-gray-500 focus:outline-none focus:ring-gray-500 lg:mx-0  "
               >
                 <option value="all">All</option>
                 <option value="premier">PREMIER LEAGUE</option>
