@@ -1,14 +1,14 @@
 import { useQuery } from "react-query";
-import {
-  premierPlayerParsing,
-  SoccerPlayer,
-} from "../../api/sports/soccerPlayer";
+import { premierPlayerParsing } from "../../api/sports/soccerPlayer";
 
-export default function useSoccerPlayer() {
-  const testQuery = useQuery(["asdf"], () => premierPlayerParsing(), {
-    staleTime: 1000 * 60 * 5,
-    refetchOnWindowFocus: false,
-    onSuccess: (data: SoccerPlayer[]) => {},
-  });
-  return { testQuery };
+export default function useSoccerPlayer(league?: string) {
+  const premirePlayerQuery = useQuery(
+    ["premirePlayer"],
+    () => premierPlayerParsing(),
+    {
+      staleTime: 1000 * 60 * 5,
+      refetchOnWindowFocus: false,
+    }
+  );
+  return { premirePlayerQuery };
 }

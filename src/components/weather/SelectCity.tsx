@@ -87,13 +87,13 @@ export const SelectCity = () => {
         </form>
       </Modal>
 
-      <ul className="flex h-[160px] flex-col items-center justify-around gap-3 xl:flex-row">
+      <ul className="flex flex-col items-center justify-around gap-3 lg:h-[160px] xl:flex-row">
         {getCityFromStorage?.data.map((el: City, i: number) => (
           <li
             onClick={e => {
               cardClick(e, el?.city);
             }}
-            className="relative flex h-full w-full basis-32 cursor-pointer flex-col items-center justify-center rounded-xl border bg-black py-2 font-bold text-white transition-all hover:scale-110 hover:bg-secondaryBg xl:w-10 xl:py-0"
+            className="relative flex h-full min-h-[80px] w-full basis-32 cursor-pointer flex-col items-center justify-center rounded-xl border bg-black py-2 font-bold text-white transition-all hover:scale-110 hover:bg-secondaryBg xl:w-10 xl:py-0"
             key={i}
           >
             {el?.city}

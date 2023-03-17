@@ -1,6 +1,5 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
-import { val } from "cheerio/lib/api/attributes";
 
 export interface SoccerPlayer {
   name: string;
@@ -25,7 +24,9 @@ export interface SoccerPlayer {
   conceded?: string;
 }
 
-export interface SoccerPlayerDetail {}
+export interface SoccerPlayerObj {
+  [key: string]: SoccerPlayer;
+}
 
 async function fetchSoccerPlayersData(kind: string, position: string) {
   const API_URL = `/competition/rankings/${kind}/2023/${position}`;
@@ -68,8 +69,8 @@ async function commonParsing(kind: string, position: string) {
     }
   });
 
-  const test = await getPlayerDetail(playerRankArr, position);
-  console.log(playerRankArr);
+  await getPlayerDetail(playerRankArr, position);
+  return playerRankArr;
 }
 
 function getPlayerDetail(arr: SoccerPlayer[], position: string): any {
@@ -109,18 +110,21 @@ function getPlayerDetail(arr: SoccerPlayer[], position: string): any {
       const height = $playerInfo.find("div:nth-child(3) > div.big-row").text();
       const value = $playerInfo.find("div:nth-child(4) > div.big-row").text();
 
+      el.allPlay = allPlay;
+      el.allTime = allTime;
+      el.country = country;
+      el.weight = weight;
+      el.height = height;
+      el.value = value;
+      el.year = year;
+      el.countryImg = countryImg;
+
       if (position === "best-goalkeepers") {
+        el.cleanSheets = assist;
+        el.conceded = goal;
       } else {
-        el.allPlay = allPlay;
-        el.allTime = allTime;
         el.goal = goal;
         el.assist = assist;
-        el.country = country;
-        el.weight = weight;
-        el.height = height;
-        el.value = value;
-        el.year = year;
-        el.countryImg = countryImg;
       }
     });
   });
@@ -128,9 +132,8 @@ function getPlayerDetail(arr: SoccerPlayer[], position: string): any {
 
 // 파싱
 export const premierPlayerParsing = async (): Promise<any> => {
-  const scorers = await commonParsing("premier_league", "top-scorers");
-  const goalkeepers = await commonParsing("premier_league", "top-scorers");
-  const assiters = await commonParsing("premier_league", "top-scorers");
+  const player = await commonParsing("premier_league", "top-scorers");
+  const goalkeeper = await commonParsing("premier_league", "best-goalkeepers");
 
-  return true;
+  return { player, goalkeeper };
 };
