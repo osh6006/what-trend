@@ -41,7 +41,7 @@ export default function SoccerTeam() {
           </div>
           <div className="mt-12 flex flex-col items-center gap-14 lg:flex-row lg:items-center lg:justify-between lg:gap-10">
             {top3?.map((data: teamRank, i: number) => (
-              <RankCard key={uuidv4()} teamInfo={data} />
+              <RankCard key={uuidv4()} rank={i + 1} teamInfo={data} />
             ))}
           </div>
           <RankTable teamInfo={rest && rest} />

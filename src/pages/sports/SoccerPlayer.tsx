@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 import { SoccerLayout } from "../../components/sports/SoccerLayout";
-import useSoccerPlayer from "../../hooks/sports/useSoccerPlayer";
 import { useState } from "react";
 import { SoccerLeagueSelect } from "../../components/sports/SoccerLeagueSelect";
+import { SoccerPlayerRank } from "../../api/sports/soccerPlayer";
+import { v4 as uuidv4 } from "uuid";
+import { RankCard } from "../../components/sports/RankCard";
+import useSoccerPlayer from "../../hooks/sports/useSoccerPlayer";
 
 export default function SoccerPlayer() {
-  const { premirePlayerQuery } = useSoccerPlayer();
-  const [selectedOption, setSelectedOption] = useState<string>("all");
+  const [selectedOption, setSelectedOption] =
+    useState<string>("premirePlayerQuery");
+  const player = useSoccerPlayer(selectedOption);
+  console.log(player);
 
   const handleOptionChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     if (event.target.value !== "") {
@@ -26,6 +31,16 @@ export default function SoccerPlayer() {
         </Link>
         <div>
           <SoccerLeagueSelect handleOptionChange={handleOptionChange} />
+        </div>
+        <div className="mt-12 flex flex-col items-center gap-14 lg:flex-row lg:items-center lg:justify-between">
+          {player?.data?.player.map(
+            (data: SoccerPlayerRank, i: number) =>
+              i <= 2 && (
+                <>
+                  <RankCard key={uuidv4()} rank={i + 1} playerInfo={data} />
+                </>
+              )
+          )}
         </div>
       </div>
     </SoccerLayout>

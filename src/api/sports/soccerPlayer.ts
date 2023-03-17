@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
 
-export interface SoccerPlayer {
+export interface SoccerPlayerRank {
   name: string;
   team: string;
   play?: string;
@@ -22,10 +22,12 @@ export interface SoccerPlayer {
   value?: string;
   cleanSheets?: string;
   conceded?: string;
+  shirtnum?: string;
+  elo?: string;
 }
 
 export interface SoccerPlayerObj {
-  [key: string]: SoccerPlayer;
+  [key: string]: SoccerPlayerRank;
 }
 
 async function fetchSoccerPlayersData(kind: string, position: string) {
@@ -51,12 +53,12 @@ async function commonParsing(kind: string, position: string) {
   const $ = cheerio.load(html.data);
 
   const $ranks = $("#ranking_table > tr");
-  const playerRankArr: SoccerPlayer[] = [];
+  const playerRankArr: SoccerPlayerRank[] = [];
 
   $ranks.each((idx, node) => {
     const name = $(node).find("td.ta-l > a > p > b").text();
     const team = $(node).find("td.ta-l > a > span").text();
-    const img = $(node).find(".player-img").attr("src");
+    const img = $(node).find("td:nth-child(2) > img").attr("src");
     const teamImg = $(node).find("td.ta-l > a > img").attr("src");
     const id = $(node).find("td.ta-l > a").attr("href")?.split("/")[4];
     const play = $(node).find("td:nth-child(5)").text();
@@ -73,8 +75,8 @@ async function commonParsing(kind: string, position: string) {
   return playerRankArr;
 }
 
-function getPlayerDetail(arr: SoccerPlayer[], position: string): any {
-  arr.forEach((el: SoccerPlayer, i: number) => {
+function getPlayerDetail(arr: SoccerPlayerRank[], position: string): any {
+  arr.forEach((el: SoccerPlayerRank, i: number) => {
     Promise.all([fetchPlayerData(el.id)]).then((data: any) => {
       const $ = cheerio.load(data[0].data);
       const $performanceInfo = $(
@@ -109,6 +111,12 @@ function getPlayerDetail(arr: SoccerPlayer[], position: string): any {
       const weight = $playerInfo.find("div:nth-child(2) > div.big-row").text();
       const height = $playerInfo.find("div:nth-child(3) > div.big-row").text();
       const value = $playerInfo.find("div:nth-child(4) > div.big-row").text();
+      const shirtnum = $playerInfo
+        .find("div:nth-child(3) > div.round-row.mb5.black > span")
+        .text();
+      const elo = $playerInfo
+        .find("div:nth-child(4) > div.round-row.mb5.green > span")
+        .text();
 
       el.allPlay = allPlay;
       el.allTime = allTime;
@@ -118,6 +126,8 @@ function getPlayerDetail(arr: SoccerPlayer[], position: string): any {
       el.value = value;
       el.year = year;
       el.countryImg = countryImg;
+      el.shirtnum = shirtnum;
+      el.elo = elo;
 
       if (position === "best-goalkeepers") {
         el.cleanSheets = assist;
