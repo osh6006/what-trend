@@ -68,16 +68,7 @@ export const RankCard = ({ teamInfo }: RankCardProps) => {
           <div className="uppercase">Recently</div>
           <div className="text-center">-</div>
           <div className="flex items-center justify-center gap-1 text-center text-sm   text-white">
-            <div className="flex-1 rounded-sm bg-green-500 p-[1px]">W</div>
-            <div className="flex-1 rounded-sm bg-green-500 p-[1px]">W</div>
-            <div className="flex-1 rounded-sm bg-red-500 px-[6px] py-[1px]">
-              L
-            </div>
-            <div className="flex-1 rounded-sm bg-blue-500 py-[1px] px-[4px]">
-              D
-            </div>
-            <div className="flex-1 rounded-sm bg-green-500 p-[1px]">W</div>
-            {teamInfo?.form?.split(" ").map((data: string, i: number) => (
+            {teamInfo?.form?.split("").map((data: string, i: number) => (
               <Recently kind="card" word={data} key={i} />
             ))}
           </div>
