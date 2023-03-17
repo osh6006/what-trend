@@ -81,47 +81,50 @@ export const RankTable = ({
             </tr>
           </thead>
           <tbody>
-            {playerInfo?.map((el: SoccerPlayerRank, i: number) => (
-              <tr
-                key={i}
-                className="border-b border-gray-200 hover:bg-gray-100"
-              >
-                <td className={td}>{i + 1}</td>
-                <td className={tdimg}>
-                  <img
-                    src={el.img}
-                    alt="logo"
-                    className="h-14 w-14 rounded-full border-2 border-gray-500"
-                  />
-                  <span>{el.name}</span>
-                </td>
-                <td className={td}>{el.allPlay}</td>
-                <td className={tdimg}>
-                  <img
-                    src={el.teamImg}
-                    alt="logo"
-                    className="h-10 w-10 rounded-full border-2 border-gray-500 p-1"
-                  />
-                  {el.team}
-                </td>
-                <td className="">
-                  <div className={tdimg}>
-                    <img
-                      src={el.countryImg}
-                      alt="logo"
-                      className="h-10 w-10 rounded-full border-2 border-gray-500 p-1"
-                    />
-                    {el.country}
-                  </div>
-                </td>
-                <td className={td}>{!goalkeeper ? el.goal : el.save}</td>
-                <td className={td}>
-                  {!goalkeeper ? el.assist : el.cleanSheets}
-                </td>
-                <td className={td}>{el.elo}</td>
-                <td>{el.value} M&#8364;</td>
-              </tr>
-            ))}
+            {playerInfo?.map(
+              (el: SoccerPlayerRank, i: number) =>
+                i >= 3 && (
+                  <tr
+                    key={i}
+                    className="border-b border-gray-200 hover:bg-gray-100"
+                  >
+                    <td className={td}>{i + 1}</td>
+                    <td className={tdimg}>
+                      <img
+                        src={el.img}
+                        alt="logo"
+                        className="h-14 w-14 rounded-full border-2 border-gray-500"
+                      />
+                      <span>{el.name}</span>
+                    </td>
+                    <td className={td}>{el.allPlay}</td>
+                    <td className={tdimg}>
+                      <img
+                        src={el.teamImg}
+                        alt="logo"
+                        className="h-10 w-10 rounded-full border-2 border-gray-500 p-1"
+                      />
+                      {el.team}
+                    </td>
+                    <td className="">
+                      <div className={tdimg}>
+                        <img
+                          src={el.countryImg}
+                          alt="logo"
+                          className="h-10 w-10 rounded-full border-2 border-gray-500 p-1"
+                        />
+                        {el.country}
+                      </div>
+                    </td>
+                    <td className={td}>{!goalkeeper ? el.goal : el.save}</td>
+                    <td className={td}>
+                      {!goalkeeper ? el.assist : el.cleanSheets}
+                    </td>
+                    <td className={td}>{el.elo}</td>
+                    <td>{el.value} M&#8364;</td>
+                  </tr>
+                )
+            )}
           </tbody>
         </table>
       )}

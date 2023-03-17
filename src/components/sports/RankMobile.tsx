@@ -1,9 +1,12 @@
 import { teamRank } from "../../api/sports/soccerTeam";
 import { v4 as uuidv4 } from "uuid";
 import { Recently } from "./Recently";
+import { SoccerPlayerRank } from "../../api/sports/soccerPlayer";
 
 interface RankTableProps {
   teamInfo?: teamRank[];
+  playerInfo?: SoccerPlayerRank[];
+  goalkeeper?: boolean;
 }
 
 const tr = "mb-10 flex flex-row flex-wrap bg-white";
@@ -11,8 +14,14 @@ const td =
   "relative block w-full border border-b p-3 text-center text-gray-800";
 const th =
   "absolute top-0 left-0 bg-blue-300 px-2 py-1 text-xs font-bold uppercase";
+const tdimg = `${td} flex flex-col items-center justfy-center`;
+const img = "h-10 w-10 rounded-full border-2 border-gray-500 p-1";
 
-export const RankMobile = ({ teamInfo }: RankTableProps) => {
+export const RankMobile = ({
+  teamInfo,
+  playerInfo,
+  goalkeeper,
+}: RankTableProps) => {
   return (
     <div className="px-4">
       <table className="mt-7 w-full border-collapse lg:hidden">
@@ -61,6 +70,54 @@ export const RankMobile = ({ teamInfo }: RankTableProps) => {
               </td>
             </tr>
           ))}
+          {playerInfo?.map(
+            (el: SoccerPlayerRank, i: number) =>
+              i >= 3 && (
+                <tr className={tr} key={uuidv4()}>
+                  <td className={td}>
+                    <span className={th}>Rank</span>
+                    {i + 1}
+                  </td>
+                  <td className={tdimg}>
+                    <img src={el.img} alt="logo" className={img} />
+                    <span className={th}>name</span>
+                    {el.name}
+                  </td>
+                  <td className={tdimg}>
+                    <img src={el.teamImg} alt="logo" className={img} />
+                    <span className={th}>team</span>
+                    {el.team}
+                  </td>
+                  <td className={tdimg}>
+                    <img src={el.countryImg} alt="logo" className={img} />
+                    <span className={th}>country</span>
+                    {el.country}
+                  </td>
+                  <td className={td}>
+                    <span className={th}>Matches</span>
+                    {el.allPlay}
+                  </td>
+                  <td className={td}>
+                    <span className={th}>{!goalkeeper ? "Goals" : "Save"}</span>
+                    {!goalkeeper ? el.goal : el.save}
+                  </td>
+                  <td className={td}>
+                    <span className={th}>
+                      {!goalkeeper ? "Assists" : "cleanSheets"}
+                    </span>
+                    {!goalkeeper ? el.assist : el.cleanSheets}
+                  </td>
+                  <td className={td}>
+                    <span className={th}>elo</span>
+                    {el.elo}
+                  </td>
+                  <td className={td}>
+                    <span className={th}>value</span>
+                    {el.value} M&#8364;
+                  </td>
+                </tr>
+              )
+          )}
         </tbody>
       </table>
     </div>

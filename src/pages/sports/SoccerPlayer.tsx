@@ -46,7 +46,7 @@ export default function SoccerPlayer() {
         </div>
       </div>
       <RankTable playerInfo={player?.data?.player} />
-      <RankMobile />
+      <RankMobile playerInfo={player?.data?.player} />
     </SoccerLayout>
   );
 }
