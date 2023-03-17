@@ -32,6 +32,9 @@ export const RankCard = ({ teamInfo, playerInfo, rank }: RankCardProps) => {
         {teamInfo?.name}
         {playerInfo?.name}
       </h1>
+      <h3 className="mt-2 whitespace-nowrap text-lg font-bold">
+        {playerInfo?.value} M&#8364;
+      </h3>
       <div className="flex w-full items-center justify-between border-b-2 py-4 font-bold">
         <div className="flex flex-col items-center justify-center capitalize">
           <div>Rank</div>
@@ -108,10 +111,12 @@ export const RankCard = ({ teamInfo, playerInfo, rank }: RankCardProps) => {
               </div>
             </div>
             <div className="grid grid-cols-3">
-              <div className="uppercase">Assist</div>
+              <div className="uppercase">
+                {playerInfo?.assist ? "assist" : "cleanSheets"}
+              </div>
               <div className="text-center">-</div>
               <div className="text-center">
-                {playerInfo?.assist || playerInfo?.conceded}
+                {playerInfo?.assist || playerInfo?.cleanSheets}
               </div>
             </div>
             <div className="grid grid-cols-3">

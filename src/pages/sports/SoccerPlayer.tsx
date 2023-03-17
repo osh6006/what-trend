@@ -6,6 +6,8 @@ import { SoccerPlayerRank } from "../../api/sports/soccerPlayer";
 import { v4 as uuidv4 } from "uuid";
 import { RankCard } from "../../components/sports/RankCard";
 import useSoccerPlayer from "../../hooks/sports/useSoccerPlayer";
+import { RankTable } from "../../components/sports/RankTable";
+import { RankMobile } from "../../components/sports/RankMobile";
 
 export default function SoccerPlayer() {
   const [selectedOption, setSelectedOption] =
@@ -43,6 +45,8 @@ export default function SoccerPlayer() {
           )}
         </div>
       </div>
+      <RankTable playerInfo={player?.data?.player} />
+      <RankMobile />
     </SoccerLayout>
   );
 }
