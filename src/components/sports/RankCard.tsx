@@ -6,9 +6,15 @@ interface RankCardProps {
   teamInfo?: teamRank;
   playerInfo?: SoccerPlayerRank;
   rank?: number;
+  goalkeeper?: boolean;
 }
 
-export const RankCard = ({ teamInfo, playerInfo, rank }: RankCardProps) => {
+export const RankCard = ({
+  teamInfo,
+  playerInfo,
+  rank,
+  goalkeeper,
+}: RankCardProps) => {
   return (
     <div className="flex min-w-[375px] max-w-sm flex-col items-center rounded-md px-10 py-2 text-xl shadow-xl">
       {teamInfo?.img && (
@@ -32,9 +38,11 @@ export const RankCard = ({ teamInfo, playerInfo, rank }: RankCardProps) => {
         {teamInfo?.name}
         {playerInfo?.name}
       </h1>
-      <h3 className="mt-2 whitespace-nowrap text-lg font-bold">
-        {playerInfo?.value} M&#8364;
-      </h3>
+      {playerInfo?.value && (
+        <h3 className="mt-2 whitespace-nowrap text-lg font-bold">
+          {playerInfo?.value}M&#8364;
+        </h3>
+      )}
       <div className="flex w-full items-center justify-between border-b-2 py-4 font-bold">
         <div className="flex flex-col items-center justify-center capitalize">
           <div>Rank</div>
@@ -56,10 +64,10 @@ export const RankCard = ({ teamInfo, playerInfo, rank }: RankCardProps) => {
           </div>
         </div>
         <div className="flex flex-col items-center justify-center gap-3 capitalize">
-          <div>{teamInfo ? "Points" : "Goals"}</div>
+          <div>{teamInfo ? "Points" : !goalkeeper ? "Goals" : "Save"}</div>
           <div>
             {teamInfo?.point}
-            {playerInfo?.goal}
+            {!goalkeeper ? playerInfo?.goal : playerInfo?.cleanSheets}
           </div>
         </div>
       </div>
@@ -102,21 +110,19 @@ export const RankCard = ({ teamInfo, playerInfo, rank }: RankCardProps) => {
         <>
           <div className="mt-3 flex w-full flex-col gap-3 py-3 text-base font-bold text-gray-600">
             <div className="grid grid-cols-3 ">
-              <div className="uppercase">
-                {playerInfo?.goal ? "goal" : "save"}
-              </div>
+              <div className="uppercase">{!goalkeeper ? "goal" : "save"}</div>
               <div className="text-center">-</div>
               <div className="text-center">
-                {playerInfo?.goal || playerInfo?.save}
+                {!goalkeeper ? playerInfo?.goal : playerInfo?.save}
               </div>
             </div>
             <div className="grid grid-cols-3">
               <div className="uppercase">
-                {playerInfo?.assist ? "assist" : "cleanSheets"}
+                {!goalkeeper ? "assist" : "cleanSheets"}
               </div>
               <div className="text-center">-</div>
               <div className="text-center">
-                {playerInfo?.assist || playerInfo?.cleanSheets}
+                {!goalkeeper ? playerInfo?.assist : playerInfo?.cleanSheets}
               </div>
             </div>
             <div className="grid grid-cols-3">

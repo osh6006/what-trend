@@ -64,7 +64,7 @@ export const RankMobile = ({
                 <span className={th}>form</span>
                 <div className="flex items-center justify-center gap-1 font-bold text-white">
                   {el.form.split("").map((el: string, i: number) => (
-                    <Recently kind="table" word={el} key={i} />
+                    <Recently kind="table" word={el} key={uuidv4()} />
                   ))}
                 </div>
               </td>

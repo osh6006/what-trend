@@ -1,6 +1,7 @@
 import { SoccerPlayerRank } from "../../api/sports/soccerPlayer";
 import { teamRank } from "../../api/sports/soccerTeam";
 import { Recently } from "./Recently";
+import { v4 as uuidv4 } from "uuid";
 
 interface RankTableProps {
   teamInfo?: teamRank[];
@@ -38,7 +39,7 @@ export const RankTable = ({
           <tbody>
             {teamInfo?.map((el: teamRank, i: number) => (
               <tr
-                key={i}
+                key={uuidv4()}
                 className="border-b border-gray-200 hover:bg-gray-100"
               >
                 <td className={td}>{el.rank}</td>
@@ -57,7 +58,7 @@ export const RankTable = ({
                 <td className={td}>{el.point}</td>
                 <td className="flex items-center justify-center gap-2 py-3 px-6 text-white">
                   {el.form.split("").map((data: string, idx: number) => (
-                    <Recently kind="table" word={data} key={idx} />
+                    <Recently kind="table" word={data} key={uuidv4()} />
                   ))}
                 </td>
               </tr>
@@ -85,7 +86,7 @@ export const RankTable = ({
               (el: SoccerPlayerRank, i: number) =>
                 i >= 3 && (
                   <tr
-                    key={i}
+                    key={uuidv4()}
                     className="border-b border-gray-200 hover:bg-gray-100"
                   >
                     <td className={td}>{i + 1}</td>
@@ -98,13 +99,15 @@ export const RankTable = ({
                       <span>{el.name}</span>
                     </td>
                     <td className={td}>{el.allPlay}</td>
-                    <td className={tdimg}>
-                      <img
-                        src={el.teamImg}
-                        alt="logo"
-                        className="h-10 w-10 rounded-full border-2 border-gray-500 p-1"
-                      />
-                      {el.team}
+                    <td className={""}>
+                      <div className={tdimg}>
+                        <img
+                          src={el.teamImg}
+                          alt="logo"
+                          className="h-10 w-10 rounded-full border-2 border-gray-500 p-1"
+                        />
+                        {el.team}
+                      </div>
                     </td>
                     <td className="">
                       <div className={tdimg}>
