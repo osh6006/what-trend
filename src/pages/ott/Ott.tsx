@@ -1,7 +1,5 @@
-import React from 'react'
+import { OttLayout } from "../../components/ott/OttLayout";
 
 export default function Ott() {
-  return (
-    <div>Ott</div>
-  )
+  return <OttLayout>Ott</OttLayout>;
 }

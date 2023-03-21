@@ -23,10 +23,10 @@ export const NavbarDeskTopMenu = () => {
           Football
         </NavLink>
       </NavbarAccodion>
+      <NavbarLink title="OTT" path="/ott" />
       <NavbarAccodion title="Community" path="/humor">
         <div className="">test~</div>
       </NavbarAccodion>
-      <NavbarLink title="OTT" path="/ott" />
       <NavbarLink title="SNS" path="/sns" />
       <NavbarLink title="Shopping" path="/shopping" />
       <NavbarLink title="Music" path="/music" />

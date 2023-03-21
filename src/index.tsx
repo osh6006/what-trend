@@ -12,6 +12,7 @@ import Community from "./pages/Community";
 import Soccer from "./pages/sports/Soccer";
 import SoccerTeam from "./pages/sports/SoccerTeam";
 import SoccerPlayer from "./pages/sports/SoccerPlayer";
+import Ott from "./pages/ott/Ott";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
       { path: "/sports/soccer/player/", element: <SoccerPlayer /> },
       { path: "/sports/soccer/team/", element: <SoccerTeam /> },
       { path: "/humor", element: <Community /> },
-      { path: "/ott", element: <Weather /> },
+      { path: "/ott", element: <Ott /> },
       { path: "/sns", element: <Weather /> },
     ],
   },

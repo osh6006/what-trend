@@ -70,11 +70,11 @@ export const NavMobileMenu = ({ setIsOpen, isOpen }: NavMobileType) => {
           Football
         </NavLink>
       </NavbarAccodion>
-      <li className={location.pathname === "/humor" ? commonPathClass : ""}>
-        Humor
-      </li>
       <li className={location.pathname === "/ott" ? commonPathClass : ""}>
         OTT
+      </li>
+      <li className={location.pathname === "/humor" ? commonPathClass : ""}>
+        Humor
       </li>
       <li className={location.pathname === "/sns" ? commonPathClass : ""}>
         SNS
