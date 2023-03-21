@@ -13,10 +13,10 @@ export const OttNav = () => {
   return (
     <nav className="mt-3 flex gap-2">
       <NavLink
-        to="/ott/netflex"
+        to="/ott/netflix"
         className={({ isActive }) => (isActive ? active : passive)}
       >
-        <RiNetflixFill className="text-red-500" /> Netflex
+        <RiNetflixFill className="text-red-500" /> Netflix
       </NavLink>
       <NavLink
         to="/ott/disney"

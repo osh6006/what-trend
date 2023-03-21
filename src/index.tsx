@@ -28,7 +28,7 @@ const router = createBrowserRouter([
       { path: "/sports/soccer/player/", element: <SoccerPlayer /> },
       { path: "/sports/soccer/team/", element: <SoccerTeam /> },
       { path: "/ott", element: <Ott /> },
-      { path: "/ott/:id", element: <Ott /> },
+      { path: "/ott/:id/", element: <Ott /> },
       { path: "/humor", element: <Community /> },
       { path: "/sns", element: <Weather /> },
     ],

@@ -1,5 +1,4 @@
 import React from "react";
-import { useLocation, useNavigate } from "react-router-dom";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { GoSmiley } from "react-icons/go";
 import {
@@ -9,6 +8,7 @@ import {
 } from "react-icons/md";
 import { AiOutlineShoppingCart, AiOutlineHome } from "react-icons/ai";
 import { IoMdMusicalNote } from "react-icons/io";
+import { NavLink } from "react-router-dom";
 
 interface NavberLinkProps {
   title: string;
@@ -22,27 +22,24 @@ const activeClassName =
   "flex w-full cursor-pointer items-center justify-start gap-4 py-3 font-bold transition-colors bg-primaryHover";
 
 export const NavbarLink = ({ title, path }: NavberLinkProps) => {
-  const { pathname } = useLocation();
-  const navigation = useNavigate();
-
   return (
-    <li
-      className={path === pathname ? activeClassName : passiveClassName}
-      onClick={() => {
-        navigation(path);
-      }}
+    <NavLink
+      to={path}
+      className={({ isActive }) =>
+        isActive ? activeClassName : passiveClassName
+      }
     >
       <div className="flex basis-1/4 justify-end text-2xl">
         {path === "/" && <AiOutlineHome />}
         {path === "/weather" && <TiWeatherPartlySunny />}
         {path === "/humor" && <GoSmiley />}
-        {path === "/ott" && <MdVideoLibrary />}
+        {path === "/ott/netflix" && <MdVideoLibrary />}
         {path === "/sns" && <MdOutlineTextsms />}
         {path === "/shopping" && <AiOutlineShoppingCart />}
         {path === "/sports" && <MdOutlineSportsBasketball />}
         {path === "/music" && <IoMdMusicalNote />}
       </div>
       <p className="">{title}</p>
-    </li>
+    </NavLink>
   );
 };
