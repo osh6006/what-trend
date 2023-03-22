@@ -1,39 +1,10 @@
-// const { appUse } = require("./util/proxy");
 const { createProxyMiddleware } = require("http-proxy-middleware");
 
 module.exports = function (app) {
   appUse(app, "/ranking", "https://waffleboard.io");
-  appUse(app, "/top10/netflix/world/today/full", "https://flixpatrol.com");
-  appUse(app, "/top10/disney/world/today/full", "https://flixpatrol.com");
-  appUse(app, "/top10/amazon-prime/world/today/full", "https://flixpatrol.com");
-  appUse(
-    app,
-    "/en/premier-league/table/2kwbbcootiqqgmrzs6o5inle5",
-    "https://www.goal.com"
-  );
-  appUse(
-    app,
-    "/en/primera-divisi%C3%B3n/table/34pl8szyvrbwcmfkuocjm3r6t",
-    "https://www.goal.com"
-  );
-  appUse(
-    app,
-    "/en/serie-a/table/1r097lpxe0xn03ihb7wi98kao",
-    "https://www.goal.com"
-  );
-  appUse(
-    app,
-    "/en/bundesliga/table/6by3h89i2eykc341oz7lv1ddd",
-    "https://www.goal.com"
-  );
-  appUse(
-    app,
-    "/en/ligue-1/table/dm5ka0os1e3dxcp3vh05kmp33",
-    "https://www.goal.com"
-  );
-
+  appUse(app, "/top10", "https://flixpatrol.com");
+  appUse(app, "/en", "https://www.goal.com");
   appUse(app, "/competition/rankings/", "https://www.besoccer.com");
-
   appUse(app, "/player", "https://www.besoccer.com");
 };
 

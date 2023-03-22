@@ -1,4 +1,3 @@
-import React from "react";
 import { TiWeatherPartlySunny } from "react-icons/ti";
 import { GoSmiley } from "react-icons/go";
 import {
@@ -33,7 +32,7 @@ export const NavbarLink = ({ title, path }: NavberLinkProps) => {
         {path === "/" && <AiOutlineHome />}
         {path === "/weather" && <TiWeatherPartlySunny />}
         {path === "/humor" && <GoSmiley />}
-        {path === "/ott/netflix" && <MdVideoLibrary />}
+        {path === "/ott" && <MdVideoLibrary />}
         {path === "/sns" && <MdOutlineTextsms />}
         {path === "/shopping" && <AiOutlineShoppingCart />}
         {path === "/sports" && <MdOutlineSportsBasketball />}

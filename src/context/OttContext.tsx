@@ -11,12 +11,12 @@ interface OttContextType {
 }
 
 const OttContext = createContext<OttContextType>({
-  isMovie: false,
+  isMovie: true,
   toggleOttSwitch: () => {},
 });
 
 export function OttProvider({ children }: contextProps) {
-  const [isMovie, setIsMovie] = useState(false);
+  const [isMovie, setIsMovie] = useState(true);
   const toggleOttSwitch = () => setIsMovie(mode => !mode);
   return (
     <OttContext.Provider value={{ isMovie, toggleOttSwitch }}>

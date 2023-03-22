@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import useOTT from "../../hooks/useOTT";
+import useOTT from "../../hooks/useHomeOTT";
 import { Loading } from "../common/Loading";
 import { RankItem } from "./RankItem";
 
