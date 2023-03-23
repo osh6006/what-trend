@@ -22,13 +22,13 @@ export const OttNav = () => {
         to="/ott/disney"
         className={({ isActive }) => (isActive ? active : passive)}
       >
-        <TbBrandDisney className="text-blue-500" /> Disney
+        <TbBrandDisney className="text-blue-500" /> Disney +
       </NavLink>
       <NavLink
-        to="/ott/amazon"
+        to="/ott/amazon-prime"
         className={({ isActive }) => (isActive ? active : passive)}
       >
-        <AiFillAmazonCircle /> Amazon +
+        <AiFillAmazonCircle /> Amazon
       </NavLink>
     </nav>
   );

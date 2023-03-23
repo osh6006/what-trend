@@ -1,11 +1,16 @@
 import React from "react";
+import { OttRank } from "../../api/ott/ott";
 
 const th = "py-4 px-6 sticky top-0 bg-gray-200";
 const td = "whitespace-nowrap py-3 px-6 ";
 const tdimg = `${td} flex items-center gap-3 text-center`;
 const thimg = `${th} text-left`;
 
-export const OttTable = () => {
+interface OttOttTableProps {
+  ottArr?: OttRank[];
+}
+
+export const OttTable = ({ ottArr }: OttOttTableProps) => {
   return (
     <div className="mt-5">
       <table className="w-full table-auto text-center font-bold">

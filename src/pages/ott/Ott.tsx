@@ -19,12 +19,12 @@ export default function Ott() {
   return (
     <OttProvider>
       <OttLayout>
-        <div className="flex-1">
+        <div className="flex-1 border-r-4">
           <h1 className="text-2xl font-bold">OTT Trends</h1>
           <OttNav />
           <OttRank />
         </div>
-        <div className="basis-1/3 bg-black"></div>
+        <div className="flex basis-5/12 bg-black p-10"></div>
       </OttLayout>
     </OttProvider>
   );

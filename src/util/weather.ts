@@ -101,3 +101,11 @@ export function getAMPM(time: string): string {
   const ampm = timeNumber >= 12 ? "PM" : "AM";
   return `${timeNumber}${ampm}`;
 }
+
+export function getWeek(): string {
+  return `${
+    week[new Date(new Date().getDay()).getDay()]
+  } ${new Intl.DateTimeFormat("en-US", {
+    dateStyle: "long",
+  }).format(new Date())}`;
+}
