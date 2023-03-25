@@ -12,7 +12,8 @@ export default function Ott() {
   const navigate = useNavigate();
   const params = useParams();
   const { isMovie } = useOttContext();
-  const { ottQuery, ottDetailQuery } = useOtt(params.id, "world");
+  const { ottQuery } = useOtt(params.id, "world");
+  const { ottObj, isOttObjLoading } = useOttContext();
 
   // path init
   useEffect(() => {
@@ -36,8 +37,12 @@ export default function Ott() {
           <OttRank ottArr={ottQuery.data} isMovie={isMovie} />
         )}
       </div>
-      <div className="flex basis-5/12 flex-col items-center justify-center p-5">
-        <OttDetail ottDetail={ottDetailQuery.data} />
+      <div className="relative flex basis-5/12 flex-col items-center justify-center p-5">
+        {!isOttObjLoading && ottObj ? (
+          <OttDetail ottDetail={ottObj} />
+        ) : (
+          <Loading />
+        )}
       </div>
     </OttLayout>
   );

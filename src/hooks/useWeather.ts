@@ -99,6 +99,7 @@ export default function useWeather(search?: any): any {
       queryClient.invalidateQueries("getCity");
     },
   });
+
   const removeCityFromStorage = useMutation(
     (name: string) => removeCity(name),
     {

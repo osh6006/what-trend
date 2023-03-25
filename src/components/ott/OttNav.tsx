@@ -6,8 +6,8 @@ import { TbBrandDisney } from "react-icons/tb";
 
 const common =
   "flex items-center gap-2 rounded-md bg-black w-40 justify-center py-2 px-2 text-lg";
-const active = `${common} text-sm bg-black text-white border-none`;
-const passive = `${common} text-sm bg-transparent text-black border-2 hover:bg-black hover:text-white transition-colors`;
+const active = `${common} text-sm sm:text-lg bg-black text-white border-none`;
+const passive = `${common} text-sm sm:text-lg bg-transparent text-black border-2 hover:bg-black hover:text-white transition-colors`;
 
 export const OttNav = () => {
   return (

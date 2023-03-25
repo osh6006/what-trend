@@ -1,6 +1,5 @@
 import axios from "axios";
 import * as cheerio from "cheerio";
-import { cloneDeep } from "lodash";
 
 export interface OttRank {
   name: string;
@@ -167,13 +166,10 @@ export async function getOttDetail(id?: string) {
 
 export const ottRankParsing = async (ottopts: OttRankOpts): Promise<any> => {
   const ottRank = await helpParsing(ottopts);
-
   return ottRank;
 };
 
 export const ottDetailParsing = async (id?: string): Promise<any> => {
   const ottDetail = await getOttDetail(id);
-  console.log(ottDetail);
-
   return ottDetail;
 };
