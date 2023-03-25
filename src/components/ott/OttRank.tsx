@@ -1,5 +1,6 @@
 import { OttRankObj } from "../../api/ott/ott";
 import { getWeek } from "../../util/weather";
+import { OttMobileTable } from "./OttMobileTable";
 import OttSwitch from "./OttSwitch";
 import { OttTable } from "./OttTable";
 import { OttTop3 } from "./OttTop3";
@@ -21,12 +22,14 @@ export const OttRank = ({ ottArr, isMovie }: OttRankProps) => {
           <>
             <OttTop3 ottArr={ottArr?.movie} />
             <OttTable ottArr={ottArr?.movie} />
+            <OttMobileTable ottArr={ottArr?.movie} className="sm:hidden" />
           </>
         )}
         {!isMovie && (
           <>
             <OttTop3 ottArr={ottArr?.serise} />
             <OttTable ottArr={ottArr?.serise} />
+            <OttMobileTable ottArr={ottArr?.serise} className="sm:hidden" />
           </>
         )}
       </>

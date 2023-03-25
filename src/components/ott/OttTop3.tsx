@@ -5,15 +5,16 @@ interface OttTop3Props {
   ottArr?: OttRank[];
 }
 const wrapper = "flex flex-col items-center justify-center flex-1";
-const no1 = `${wrapper} -translate-y-7 `;
-const img = "relative rel w-32 rounded-md shadow-md ";
-const no1Img = `${img} w-40`;
-const h1 = "mt-2 text-lg text-center";
-const p = "text-base text-gray-500";
+const no1 = `${wrapper} sm:-translate-y-7 `;
+const img =
+  "relative w-20 sm:w-32 sm:rounded-full sm:rounded-md shadow-md flex-1";
+const no1Img = `${img} sm:w-40`;
+const h1 = "flex-1 mt-2 text-sm sm:text-lg text-center";
+const p = "flex-1 text-xs sm:text-base text-gray-500";
 
 export const OttTop3 = ({ ottArr }: OttTop3Props) => {
   return (
-    <div className="mt-12 flex w-full items-center justify-around gap-20 ">
+    <div className="mt-5 hidden w-full flex-col items-center justify-around gap-3 sm:mt-12 sm:flex sm:flex-row sm:gap-20  ">
       <div className={wrapper}>
         {ottArr && (
           <LazyLoadImage

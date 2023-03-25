@@ -15,7 +15,7 @@ export const OttTable = ({ ottArr }: OttOttTableProps) => {
   return (
     <>
       {ottArr && (
-        <div className="h-[350px] max-w-5xl overflow-y-scroll">
+        <div className="hidden overflow-y-scroll sm:block sm:h-[350px] sm:max-w-5xl">
           <table className=" w-full table-auto text-center font-bold ">
             <thead>
               <tr className="bg-gray-200 text-sm uppercase leading-normal text-gray-600">
