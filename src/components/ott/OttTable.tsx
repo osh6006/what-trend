@@ -31,7 +31,7 @@ export const OttTable = ({ ottArr }: OttOttTableProps) => {
                   i >= 3 && (
                     <tr
                       key={el.id}
-                      className="border-b border-gray-200 text-base hover:bg-gray-100"
+                      className="cursor-pointer border-b border-gray-200 text-base hover:bg-gray-100"
                       onClick={() => {
                         changeOttDetail.mutate(el.id);
                       }}

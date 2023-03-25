@@ -8,9 +8,9 @@ interface OttDetailProps {
 
 export const OttDetail = ({ ottDetail }: OttDetailProps) => {
   return (
-    <div className="hidden sm:block">
+    <div className="hidden sm:flex sm:flex-col">
       <div
-        className={` flex w-full items-center justify-center gap-10 rounded-lg bg-white px-5 py-10 shadow-md `}
+        className={`mt-20 flex w-full items-center justify-center gap-10 rounded-lg bg-white px-5 py-10 shadow-md `}
       >
         <div
           style={{
@@ -28,7 +28,13 @@ export const OttDetail = ({ ottDetail }: OttDetailProps) => {
           <p className="mt-2 font-medium">{`DIRECTED BY : ${ottDetail?.director}`}</p>
         </div>
       </div>
-      <div className="my-10 w-full rounded-lg bg-white px-5 py-10 shadow-md">
+
+      <div className="mt-7 w-full space-y-2 rounded-lg bg-white px-5 py-5 shadow-md">
+        <h1 className="text-lg font-bold uppercase">Strring</h1>
+        <p>{ottDetail?.starring}</p>
+      </div>
+
+      <div className="mt-7 w-full rounded-lg bg-white px-5 py-10 shadow-md">
         <div className="mt-4 flex items-center justify-around">
           <div className="flex flex-col items-center justify-center text-lg font-medium">
             <FaImdb className="text-3xl text-blue-900" />
