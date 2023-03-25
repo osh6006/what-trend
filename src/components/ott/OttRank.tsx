@@ -13,8 +13,8 @@ export const OttRank = ({ ottArr, isMovie }: OttRankProps) => {
   return (
     <section className="relative mx-5 mt-5 min-h-[500px] rounded-lg bg-white p-5 text-xl font-medium shadow-lg">
       <>
-        <header className="flex items-center justify-between pr-5">
-          <h1 className="text-2xl">{getWeek()}</h1>
+        <header className="flex items-center justify-between sm:pr-5">
+          <h1 className="text-lg sm:text-2xl">{getWeek()}</h1>
           <OttSwitch />
         </header>
         {isMovie && (
