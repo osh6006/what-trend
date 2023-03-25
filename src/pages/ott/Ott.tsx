@@ -3,7 +3,7 @@ import { OttLayout } from "../../components/ott/OttLayout";
 import { OttNav } from "../../components/ott/OttNav";
 import { useEffect } from "react";
 import { OttRank } from "../../components/ott/OttRank";
-import { OttProvider, useOttContext } from "../../context/OttContext";
+import { useOttContext } from "../../context/OttContext";
 import { OttDetail } from "../../components/ott/OttDetail";
 import useOtt from "../../hooks/ott/useOtt";
 import { Loading } from "../../components/common/Loading";
@@ -23,9 +23,9 @@ export default function Ott() {
 
   return (
     <OttLayout>
-      <div className=" flex-1 border-r-4">
+      <div className="flex-1">
         <div className="px-5">
-          <h1 className="text-2xl font-bold">OTT Trends</h1>
+          <h1 className="text-xl font-bold sm:text-2xl">OTT Trends</h1>
           <OttNav />
         </div>
         {ottQuery?.isLoading ? (
@@ -36,7 +36,7 @@ export default function Ott() {
           <OttRank ottArr={ottQuery.data} isMovie={isMovie} />
         )}
       </div>
-      <div className="flex basis-5/12 flex-col items-center justify-center p-10">
+      <div className="flex basis-5/12 flex-col items-center justify-center p-5">
         <OttDetail ottDetail={ottDetailQuery.data} />
       </div>
     </OttLayout>

@@ -24,6 +24,7 @@ export interface OttDetailObj {
   desc?: string;
   director?: string;
   weather?: string;
+  starring?: string;
 }
 
 export interface OttRankOpts {
@@ -146,6 +147,10 @@ export async function getOttDetail(id?: string) {
     "body > div.content.mt-4 > div > div > div.mb-6 > div > div > span:nth-child(5)"
   ).text();
 
+  const $starring = $(
+    "body > div.content.mt-4 > div > div > div > div:nth-child(1) > div.card.-mx-content > div.card-body.space-y-2.text-sm > div:nth-child(1) > div:nth-child(2)"
+  ).text();
+
   OttDetailObj.desc = $desc;
   OttDetailObj.genre = $genre;
   OttDetailObj.rotten = $rotten;
@@ -155,6 +160,7 @@ export async function getOttDetail(id?: string) {
   OttDetailObj.director = $director;
   OttDetailObj.weather = $weather;
   OttDetailObj.name = $name;
+  OttDetailObj.starring = $starring;
 
   return OttDetailObj;
 }

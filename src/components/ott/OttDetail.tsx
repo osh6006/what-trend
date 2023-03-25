@@ -1,4 +1,6 @@
 import { OttDetailObj } from "../../api/ott/ott";
+import { GiTomato } from "react-icons/gi";
+import { FaImdb } from "react-icons/fa";
 
 interface OttDetailProps {
   ottDetail: OttDetailObj;
@@ -28,10 +30,17 @@ export const OttDetail = ({ ottDetail }: OttDetailProps) => {
         </div>
       </div>
       <div className="my-10 w-full rounded-lg bg-white px-5 py-10 shadow-md">
-        <p>
-          STARRING : Idris Elba, Dermot Crowley, Cynthia Erivo, Andy Serkis,
-          Jess Liaudin, Einar Kuusk
-        </p>
+        <div className="mt-4 flex items-center justify-around">
+          <div className="flex flex-col items-center justify-center text-lg font-medium">
+            <FaImdb className="text-3xl text-blue-900" />
+            <p>{ottDetail?.imdb}</p>
+          </div>
+          <div className="h-full rounded-full border-2 border-black"></div>
+          <div className="flex flex-col items-center justify-center text-lg font-medium">
+            <GiTomato className="text-3xl text-red-600" />
+            <p>{ottDetail?.imdb}</p>
+          </div>
+        </div>
       </div>
     </>
   );
