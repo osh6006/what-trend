@@ -3,11 +3,16 @@ import { OttLayout } from "../../components/ott/OttLayout";
 import { OttNav } from "../../components/ott/OttNav";
 import { useEffect } from "react";
 import { OttRank } from "../../components/ott/OttRank";
-import { OttProvider } from "../../context/OttContext";
+import { OttProvider, useOttContext } from "../../context/OttContext";
+import { OttDetail } from "../../components/ott/OttDetail";
+import useOtt from "../../hooks/ott/useOtt";
+import { Loading } from "../../components/common/Loading";
 
 export default function Ott() {
-  const params = useParams();
   const navigate = useNavigate();
+  const params = useParams();
+  const { isMovie } = useOttContext();
+  const { ottQuery, ottDetailQuery } = useOtt(params.id, "world");
 
   // path init
   useEffect(() => {
@@ -17,15 +22,23 @@ export default function Ott() {
   }, [navigate, params]);
 
   return (
-    <OttProvider>
-      <OttLayout>
-        <div className="flex-1 border-r-4">
+    <OttLayout>
+      <div className=" flex-1 border-r-4">
+        <div className="px-5">
           <h1 className="text-2xl font-bold">OTT Trends</h1>
           <OttNav />
-          <OttRank />
         </div>
-        <div className="flex basis-5/12 bg-black p-10"></div>
-      </OttLayout>
-    </OttProvider>
+        {ottQuery?.isLoading ? (
+          <section className="relative mx-5 mt-5 min-h-[500px] p-5 text-xl font-medium shadow-lg">
+            <Loading />
+          </section>
+        ) : (
+          <OttRank ottArr={ottQuery.data} isMovie={isMovie} />
+        )}
+      </div>
+      <div className="flex basis-5/12 flex-col items-center justify-center p-10">
+        <OttDetail ottDetail={ottDetailQuery.data} />
+      </div>
+    </OttLayout>
   );
 }

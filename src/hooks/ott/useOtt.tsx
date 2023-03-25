@@ -1,18 +1,29 @@
 import { useQuery } from "react-query";
-import { OttRankOpts, ottRankParsing } from "../../api/ott/ott";
+import {
+  ottDetailParsing,
+  OttRankOpts,
+  ottRankParsing,
+} from "../../api/ott/ott";
 
-export default function useOtt(kind?: string, country?: string) {
+export default function useOtt(kind?: string, country?: string, id?: string) {
   const ottopt: OttRankOpts = { kind, country };
-  console.log(ottopt);
 
-  const ottQuery = useQuery(["Ott", ottopt], () => ottRankParsing(ottopt), {
+  const ottQuery = useQuery([`Ott`, ottopt], () => ottRankParsing(ottopt), {
     staleTime: 1000 * 60 * 5,
     refetchOnWindowFocus: false,
   });
 
-  if (kind) {
-    return { ottQuery };
-  }
+  const titleId = id || ottQuery?.data?.movie[0].id;
 
-  return undefined;
+  const ottDetailQuery = useQuery(
+    [`OttDetail`, titleId],
+    () => ottDetailParsing(titleId),
+    {
+      staleTime: 1000 * 60 * 5,
+      refetchOnWindowFocus: false,
+      enabled: !!titleId,
+    }
+  );
+
+  return { ottQuery, ottDetailQuery };
 }

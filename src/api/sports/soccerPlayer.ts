@@ -1,4 +1,3 @@
-import { primeraLeagueParsing } from "./soccerTeam";
 import axios from "axios";
 import * as cheerio from "cheerio";
 
@@ -239,8 +238,4 @@ export const allPlayerParsing = async (): Promise<any> => {
     bundesliga,
     ligue1,
   };
-};
-
-export const allPlayerParsingTest = async (): Promise<any> => {
-  return [];
 };

@@ -13,6 +13,7 @@ import Soccer from "./pages/sports/Soccer";
 import SoccerTeam from "./pages/sports/SoccerTeam";
 import SoccerPlayer from "./pages/sports/SoccerPlayer";
 import Ott from "./pages/ott/Ott";
+import { OttProvider } from "./context/OttContext";
 
 const router = createBrowserRouter([
   {
@@ -27,8 +28,22 @@ const router = createBrowserRouter([
       { path: "/sports/soccer/", element: <Soccer /> },
       { path: "/sports/soccer/player/", element: <SoccerPlayer /> },
       { path: "/sports/soccer/team/", element: <SoccerTeam /> },
-      { path: "/ott", element: <Ott /> },
-      { path: "/ott/:id/", element: <Ott /> },
+      {
+        path: "/ott",
+        element: (
+          <OttProvider>
+            <Ott />
+          </OttProvider>
+        ),
+      },
+      {
+        path: "/ott/:id/",
+        element: (
+          <OttProvider>
+            <Ott />
+          </OttProvider>
+        ),
+      },
       { path: "/humor", element: <Community /> },
       { path: "/sns", element: <Weather /> },
     ],
