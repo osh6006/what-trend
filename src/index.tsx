@@ -44,6 +44,7 @@ const router = createBrowserRouter([
           </OttProvider>
         ),
       },
+      { path: "/shopping", element: <Weather /> },
       { path: "/humor", element: <Community /> },
       { path: "/sns", element: <Weather /> },
     ],
