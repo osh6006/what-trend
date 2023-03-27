@@ -16,7 +16,7 @@ export default function Weather() {
         {weatherQuery.isLoading && airPollutionQuery.isLoading && <Loading />}
         {airPollutionQuery.isLoading || weatherQuery.isLoading || (
           <>
-            <section className="w-full p-5 shadow-lg lg:w-6/12 lg:min-w-[500px]">
+            <section className="w-full overflow-y-scroll p-5 shadow-lg lg:w-6/12 lg:min-w-[500px]">
               <Search />
               <h1 className="mt-3 text-5xl">
                 Weather <strong>Forecast</strong>

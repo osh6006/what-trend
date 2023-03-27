@@ -14,6 +14,7 @@ import SoccerTeam from "./pages/sports/SoccerTeam";
 import SoccerPlayer from "./pages/sports/SoccerPlayer";
 import Ott from "./pages/ott/Ott";
 import { OttProvider } from "./context/OttContext";
+import Shopping from "./pages/shopping/Shopping";
 
 const router = createBrowserRouter([
   {
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
           </OttProvider>
         ),
       },
-      { path: "/shopping", element: <Weather /> },
+      { path: "/shopping", element: <Shopping /> },
       { path: "/humor", element: <Community /> },
       { path: "/sns", element: <Weather /> },
     ],
