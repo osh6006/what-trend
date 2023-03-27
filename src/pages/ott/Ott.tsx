@@ -24,26 +24,26 @@ export default function Ott() {
 
   return (
     <OttLayout>
-      <div className="flex-1">
+      <section className="flex-1">
         <div className="px-5">
           <h1 className="text-xl font-bold sm:text-2xl">OTT Trends</h1>
           <OttNav />
         </div>
         {ottQuery?.isLoading ? (
-          <section className="relative mx-5 mt-5 min-h-[500px] p-5 text-xl font-medium shadow-lg">
+          <div className="relative mx-5 mt-5 min-h-[500px] p-5 text-xl font-medium shadow-lg">
             <Loading />
-          </section>
+          </div>
         ) : (
           <OttRank ottArr={ottQuery.data} isMovie={isMovie} />
         )}
-      </div>
-      <div className="relative flex basis-5/12 flex-col items-center justify-center p-5">
+      </section>
+      <section className="relative flex basis-5/12 flex-col items-center justify-center p-5">
         {!isOttObjLoading && ottObj ? (
           <OttDetail ottDetail={ottObj} />
         ) : (
           <Loading />
         )}
-      </div>
+      </section>
     </OttLayout>
   );
 }

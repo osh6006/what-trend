@@ -18,8 +18,10 @@ export const OttDetail = ({ ottDetail }: OttDetailProps) => {
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
+            width: "15rem",
+            height: "15rem",
           }}
-          className="h-80 w-80 rounded-lg"
+          className="rounded-lg"
         ></div>
         <div className="flex h-full w-full flex-col justify-between ">
           <h1 className="text-2xl font-bold">{ottDetail?.name}</h1>
