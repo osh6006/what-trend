@@ -12,7 +12,7 @@ export const SearchWeather = () => {
 
   return (
     <>
-      <main className="ml-0 flex h-screen w-full flex-1 flex-col gap-10 py-4 sm:ml-72 lg:ml-96 lg:flex-row lg:pr-10">
+      <section className="ml-0 flex h-screen w-full flex-1 flex-col gap-10 py-4 sm:ml-72 lg:ml-96 lg:flex-row lg:pr-10">
         {weatherQuery.isLoading && airPollutionQuery.isLoading && <Loading />}
         {airPollutionQuery.isLoading || weatherQuery.isLoading || (
           <>
@@ -33,7 +33,7 @@ export const SearchWeather = () => {
             </section>
           </>
         )}
-      </main>
+      </section>
     </>
   );
 };
