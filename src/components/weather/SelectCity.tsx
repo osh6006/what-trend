@@ -53,7 +53,7 @@ export const SelectCity = () => {
   };
 
   return (
-    <div className="mt-10">
+    <div className="m-5 min-h-[10rem] w-full overflow-auto ">
       <Modal
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
@@ -86,14 +86,13 @@ export const SelectCity = () => {
           </button>
         </form>
       </Modal>
-
-      <ul className="flex flex-col items-center justify-around gap-3 lg:h-[160px] xl:flex-row">
+      <ul className="flex flex-col items-center justify-around gap-3 py-5 lg:h-[160px] xl:flex-row">
         {getCityFromStorage?.data.map((el: City, i: number) => (
           <li
             onClick={e => {
               cardClick(e, el?.city);
             }}
-            className="relative flex h-full min-h-[80px] w-full basis-32 cursor-pointer flex-col items-center justify-center rounded-xl border bg-black py-2 font-bold text-white transition-all hover:scale-110 hover:bg-secondaryBg xl:w-10 xl:py-0"
+            className="relative flex h-full min-h-[80px] w-3/5 basis-32 cursor-pointer flex-col items-center justify-center rounded-xl border bg-black py-2 font-bold text-white transition-all hover:scale-110 hover:bg-secondaryBg xl:w-10 xl:py-0"
             key={i}
           >
             {el?.city}
@@ -107,7 +106,7 @@ export const SelectCity = () => {
         ))}
         <button
           onClick={openModal}
-          className="flex h-full w-full flex-col items-center justify-center rounded-xl border-2 text-gray-400 transition-colors hover:border-gray-700 hover:text-gray-700 xl:w-auto xl:px-6 xl:py-5"
+          className="flex h-full min-h-[80px] w-3/5 flex-col items-center justify-center rounded-xl border-2 text-gray-400 transition-colors hover:border-gray-700 hover:text-gray-700 xl:w-auto xl:px-6 xl:py-5"
         >
           <div className="text-3xl">+</div>
           <div>Add City</div>
