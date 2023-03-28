@@ -53,36 +53,41 @@ AirQuality.set(5, {
 
 export function calWeather(array: any, dayAfter: number): any {
   const today = new Date();
-
   const year = today.getFullYear();
   const month = ("0" + (today.getMonth() + 1)).slice(-2);
   const day = ("0" + (today.getDate() + dayAfter)).slice(-2);
   const dateString = year + "-" + month + "-" + day;
 
   const calDay = array?.filter((data: any) => {
-    const calDay = data.dt_txt.split(" ")[0];
-    if (dateString === calDay) {
+    const day = data.dt_txt.split(" ")[0];
+    if (dateString === day) {
       return true;
     } else {
       return false;
     }
   });
 
-  const combinationDay = calDay?.reduce((prev: any, curr: any) => {
-    return {
-      ...prev,
-      feels_like: prev.main.feels_like + curr.main.feels_like,
-      main: {
-        ...prev.main,
-        temp: prev.main.temp + curr.main.temp,
-        humidity: prev.main.humidity + curr.main.humidity,
-      },
-      pop: prev.pop + curr.pop,
-      DayOfTheWeek: getDayOfWeek(prev.dt_txt.split(" ")[0]),
-    };
-  });
+  let combinationDay;
 
-  return { calDay, combinationDay };
+  if (calDay.length > 0) {
+    combinationDay = calDay?.reduce((prev: any, curr: any) => {
+      return {
+        ...prev,
+        feels_like: prev.main.feels_like + curr.main.feels_like,
+        main: {
+          ...prev.main,
+          temp: prev.main.temp + curr.main.temp,
+          humidity: prev.main.humidity + curr.main.humidity,
+        },
+        pop: prev.pop + curr.pop,
+        DayOfTheWeek: getDayOfWeek(prev.dt_txt.split(" ")[0]),
+      };
+    });
+  }
+
+  if (combinationDay) {
+    return { calDay, combinationDay };
+  }
 }
 
 export function getDayOfWeek(day: string): string {

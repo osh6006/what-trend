@@ -82,7 +82,7 @@ export default function useWeather(search?: any): any {
 
         const calFourDays: any = [];
         for (let i = 0; i < 4; i++) {
-          calFourDays.push(calWeather(fiveDays && fiveDays, i + 1));
+          calFourDays.push(calWeather(fiveDays, i + 1));
         }
 
         return { calFourDays, city, today };

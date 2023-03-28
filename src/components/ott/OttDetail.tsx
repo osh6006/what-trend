@@ -8,7 +8,7 @@ interface OttDetailProps {
 
 export const OttDetail = ({ ottDetail }: OttDetailProps) => {
   return (
-    <div className="hidden sm:flex sm:flex-col">
+    <div className="hidden overflow-y-auto sm:flex sm:flex-col lg:pr-2">
       <div
         className={`mt-20 flex w-full items-center justify-center gap-10 rounded-lg bg-white px-5 py-10 shadow-md `}
       >
@@ -43,7 +43,7 @@ export const OttDetail = ({ ottDetail }: OttDetailProps) => {
             <p>{ottDetail?.imdb}</p>
           </div>
           <div className="h-full rounded-full border-2 border-black"></div>
-          <div className="flex flex-col items-center justify-center text-lg font-medium">
+          <div className="flex flex-col items-center justify-center text-lg font-medium shadow-md">
             <GiTomato className="text-3xl text-red-600" />
             <p>{ottDetail?.rotten}</p>
           </div>
