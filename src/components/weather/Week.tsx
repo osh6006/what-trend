@@ -3,10 +3,8 @@ import { IoIosWater } from "react-icons/io";
 import { getAMPM, KALBIN } from "../../util/weather";
 
 export const Week = ({ weatherQuery }: any) => {
-  console.log(weatherQuery);
-
   return (
-    <section className="mt-5 flex flex-col gap-5 rounded-lg bg-gray-300 px-5 py-5">
+    <section className="mt-5 flex flex-col gap-5 overflow-y-auto rounded-lg bg-gray-300 px-5 py-5">
       {weatherQuery?.calFourDays?.map(
         (data: any, i: number) =>
           data && (

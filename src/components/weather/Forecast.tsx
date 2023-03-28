@@ -22,7 +22,7 @@ export const Forecast = ({
     setWeatherTab(title);
   };
   return (
-    <section className="mt-10">
+    <div className="flex flex-col">
       <ul className="flex w-full gap-10 text-2xl font-bold text-gray-400">
         <li
           className={weatherTab === "week" ? active : passive}
@@ -41,6 +41,6 @@ export const Forecast = ({
       {weatherTab === "pollution" && (
         <Pollution airPollutionQuery={airPollutionQuery?.data} />
       )}
-    </section>
+    </div>
   );
 };

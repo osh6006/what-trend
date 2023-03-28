@@ -6,7 +6,7 @@ type PollutionBgTypes = {
   [key: number]: string;
 };
 
-const commonClass: string = "mt-10 flex flex-col gap-5 rounded-lg px-5 py-10";
+const commonClass: string = "mt-10 flex flex-col gap-5 rounded-lg px-5 py-12";
 
 const pollutionBg: PollutionBgTypes = {
   1: `bg-blue-500 ${commonClass}`,
