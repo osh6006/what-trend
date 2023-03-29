@@ -51,12 +51,26 @@ AirQuality.set(5, {
   message: "Very Poor",
 });
 
+// type DayKind = "day";
+// function getFutherDay(futherDay: number, dayKind: DayKind): string {
+//   if (dayKind === "day") {
+//     return String(number).padStart(2, "0");
+//   }
+//   return "";
+// }
+
 export function calWeather(array: any, dayAfter: number): any {
   const today = new Date();
   const year = today.getFullYear();
-  const month = ("0" + (today.getMonth() + 1)).slice(-2);
-  const day = ("0" + (today.getDate() + dayAfter)).slice(-2);
+  const month = String(
+    new Date(today.getTime() + dayAfter * 24 * 60 * 60 * 1000).getMonth() + 1
+  ).padStart(2, "0");
+  const day = String(
+    new Date(today.getTime() + dayAfter * 24 * 60 * 60 * 1000).getDate()
+  ).padStart(2, "0");
   const dateString = year + "-" + month + "-" + day;
+
+  console.log(dateString);
 
   const calDay = array?.filter((data: any) => {
     const day = data.dt_txt.split(" ")[0];
