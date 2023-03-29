@@ -1,6 +1,7 @@
 import { OttDetailObj } from "../../api/ott/ott";
 import { GiTomato } from "react-icons/gi";
 import { FaImdb } from "react-icons/fa";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 interface OttDetailProps {
   ottDetail: OttDetailObj;
@@ -8,21 +9,17 @@ interface OttDetailProps {
 
 export const OttDetail = ({ ottDetail }: OttDetailProps) => {
   return (
-    <div className="hidden overflow-y-auto sm:flex sm:flex-col lg:pr-2">
+    <div className="ml-5 hidden h-full pb-5 sm:block lg:px-2 xl:ml-0 xl:pb-10">
+      <h1 className="text-xl font-bold sm:text-2xl">Ott Detail</h1>
       <div
-        className={`mt-20 flex w-full items-center justify-center gap-10 rounded-lg bg-white px-5 py-10 shadow-md `}
+        className={`mt-4 flex w-full items-center justify-center gap-10 rounded-lg bg-white px-5 py-10 shadow-md xl:mt-14 `}
       >
-        <div
-          style={{
-            backgroundImage: `url(https://flixpatrol.com/${ottDetail?.img})`,
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            width: "15rem",
-            height: "15rem",
-          }}
-          className="rounded-lg"
-        ></div>
+        <LazyLoadImage
+          alt="ott Detail img"
+          className="h-60 w-60 rounded-lg"
+          effect="blur"
+          src={`https://flixpatrol.com/${ottDetail?.img}`}
+        ></LazyLoadImage>
         <div className="flex h-full w-full flex-col justify-between ">
           <h1 className="text-2xl font-bold">{ottDetail?.name}</h1>
           <p className="mt-2 font-medium">{`${ottDetail?.country} | ${ottDetail?.weather} | ${ottDetail?.genre}`}</p>

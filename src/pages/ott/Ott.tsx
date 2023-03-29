@@ -24,7 +24,7 @@ export default function Ott() {
 
   return (
     <OttLayout>
-      <section className="flex-1">
+      <section className="h-full flex-1">
         <div className="px-5">
           <h1 className="text-xl font-bold sm:text-2xl">OTT Trends</h1>
           <OttNav />
@@ -37,7 +37,7 @@ export default function Ott() {
           <OttRank ottArr={ottQuery.data} isMovie={isMovie} />
         )}
       </section>
-      <section className="relative flex basis-5/12 flex-col items-center justify-center p-5">
+      <section className="relative h-full xl:mt-5 xl:flex-none xl:basis-5/12">
         {!isOttObjLoading && ottObj ? (
           <OttDetail ottDetail={ottObj} />
         ) : (
