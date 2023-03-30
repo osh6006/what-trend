@@ -12,7 +12,7 @@ export const OttDetail = ({ ottDetail }: OttDetailProps) => {
     <div className="ml-5 hidden h-full pb-5 sm:block lg:px-2 xl:ml-0 xl:pb-10">
       <h1 className="text-xl font-bold sm:text-2xl">Ott Detail</h1>
       <div
-        className={`mt-4 flex w-full items-center justify-center gap-10 rounded-lg bg-white px-5 py-10 shadow-md xl:mt-14 `}
+        className={`mt-4 flex w-full items-center justify-center gap-10 rounded-lg bg-white px-5 py-10 shadow-md xl:mt-[4.5rem] `}
       >
         <LazyLoadImage
           alt="ott Detail img"
@@ -39,8 +39,8 @@ export const OttDetail = ({ ottDetail }: OttDetailProps) => {
             <FaImdb className="text-3xl text-blue-900" />
             <p>{ottDetail?.imdb}</p>
           </div>
-          <div className="h-full rounded-full border-2 border-black"></div>
-          <div className="flex flex-col items-center justify-center text-lg font-medium shadow-md">
+          <div className="h-full w-5 rounded-full border-2 border-black"></div>
+          <div className="flex flex-col items-center justify-center text-lg font-medium">
             <GiTomato className="text-3xl text-red-600" />
             <p>{ottDetail?.rotten}</p>
           </div>

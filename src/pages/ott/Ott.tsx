@@ -25,7 +25,7 @@ export default function Ott() {
   return (
     <OttLayout>
       <section className="h-full flex-1">
-        <div className="px-5">
+        <div className="mt-3 px-5">
           <h1 className="text-xl font-bold sm:text-2xl">OTT Trends</h1>
           <OttNav />
         </div>
@@ -41,7 +41,9 @@ export default function Ott() {
         {!isOttObjLoading && ottObj ? (
           <OttDetail ottDetail={ottObj} />
         ) : (
-          <Loading />
+          <div className="relative h-full min-h-screen ">
+            <Loading />
+          </div>
         )}
       </section>
     </OttLayout>
