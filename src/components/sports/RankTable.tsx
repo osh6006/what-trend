@@ -2,6 +2,7 @@ import { SoccerPlayerRank } from "../../api/sports/soccerPlayer";
 import { teamRank } from "../../api/sports/soccerTeam";
 import { Recently } from "./Recently";
 import { v4 as uuidv4 } from "uuid";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 interface RankTableProps {
   teamInfo?: teamRank[];
@@ -44,7 +45,8 @@ export const RankTable = ({
               >
                 <td className={td}>{el.rank}</td>
                 <td className={tdimg}>
-                  <img
+                  <LazyLoadImage
+                    effect="blur"
                     src={`https://secure.cache.images.core.optasports.com/soccer/teams/30x30/uuid_${el?.img}.png`}
                     alt="logo"
                   />
@@ -91,7 +93,8 @@ export const RankTable = ({
                   >
                     <td className={td}>{i + 1}</td>
                     <td className={tdimg}>
-                      <img
+                      <LazyLoadImage
+                        effect="blur"
                         src={el.img}
                         alt="logo"
                         className="h-14 w-14 rounded-full border-2 border-gray-500"
@@ -101,7 +104,8 @@ export const RankTable = ({
                     <td className={td}>{el.allPlay}</td>
                     <td className={""}>
                       <div className={tdimg}>
-                        <img
+                        <LazyLoadImage
+                          effect="blur"
                           src={el.teamImg}
                           alt="logo"
                           className="h-10 w-10 rounded-full border-2 border-gray-500 p-1"
@@ -111,7 +115,8 @@ export const RankTable = ({
                     </td>
                     <td className="">
                       <div className={tdimg}>
-                        <img
+                        <LazyLoadImage
+                          effect="blur"
                           src={el.countryImg}
                           alt="logo"
                           className="h-10 w-10 rounded-full border-2 border-gray-500 p-1"

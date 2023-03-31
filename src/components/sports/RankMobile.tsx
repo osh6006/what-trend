@@ -2,6 +2,7 @@ import { teamRank } from "../../api/sports/soccerTeam";
 import { v4 as uuidv4 } from "uuid";
 import { Recently } from "./Recently";
 import { SoccerPlayerRank } from "../../api/sports/soccerPlayer";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 interface RankTableProps {
   teamInfo?: teamRank[];
@@ -79,17 +80,32 @@ export const RankMobile = ({
                     {i + 1}
                   </td>
                   <td className={tdimg}>
-                    <img src={el.img} alt="logo" className={img} />
+                    <LazyLoadImage
+                      effect="blur"
+                      src={el.img}
+                      alt="logo"
+                      className={img}
+                    />
                     <span className={th}>name</span>
                     {el.name}
                   </td>
                   <td className={tdimg}>
-                    <img src={el.teamImg} alt="logo" className={img} />
+                    <LazyLoadImage
+                      effect="blur"
+                      src={el.teamImg}
+                      alt="logo"
+                      className={img}
+                    />
                     <span className={th}>team</span>
                     {el.team}
                   </td>
                   <td className={tdimg}>
-                    <img src={el.countryImg} alt="logo" className={img} />
+                    <LazyLoadImage
+                      effect="blur"
+                      src={el.countryImg}
+                      alt="logo"
+                      className={img}
+                    />
                     <span className={th}>country</span>
                     {el.country}
                   </td>

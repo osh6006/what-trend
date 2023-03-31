@@ -28,7 +28,12 @@ export const OttMobileTable = ({ ottArr, className }: OttMobileTableProps) => {
                 {i + 1}
               </td>
               <td className={tdimg}>
-                <LazyLoadImage src={el.img} alt="logo" className={img} />
+                <LazyLoadImage
+                  src={el.img}
+                  alt="logo"
+                  className={img}
+                  effect="blur"
+                />
                 <span className={th}>name</span>
                 {el.name}
               </td>

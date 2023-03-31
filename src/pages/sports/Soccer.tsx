@@ -23,7 +23,7 @@ export default function Soccer() {
             onClick={() => {
               navigate("/sports/soccer/team");
             }}
-            className="relative aspect-square w-56 cursor-pointer rounded-full border-8 border-black bg-team bg-cover bg-center bg-no-repeat transition-all hover:opacity-40 2xl:w-96"
+            className="relative aspect-square w-56 cursor-pointer rounded-full border-8 border-black bg-team bg-cover bg-center bg-no-repeat transition-all hover:opacity-50 2xl:w-96"
           ></div>
           <div className="text-3xl font-bold">Team</div>
         </div>
@@ -33,7 +33,7 @@ export default function Soccer() {
             onClick={() => {
               navigate("/sports/soccer/player");
             }}
-            className="relative aspect-square w-56 cursor-pointer rounded-full border-8 border-black bg-player bg-cover bg-center bg-no-repeat transition-all hover:opacity-40 2xl:w-96"
+            className="relative aspect-square w-56 cursor-pointer rounded-full border-8 border-black bg-player bg-cover bg-center bg-no-repeat transition-all hover:opacity-50 2xl:w-96"
           ></div>
           <div className="text-3xl font-bold">Player</div>
         </div>

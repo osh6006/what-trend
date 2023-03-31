@@ -1,3 +1,4 @@
+import { LazyLoadImage } from "react-lazy-load-image-component";
 import { SoccerPlayerRank } from "../../api/sports/soccerPlayer";
 import { teamRank } from "../../api/sports/soccerTeam";
 import { Recently } from "./Recently";
@@ -18,17 +19,19 @@ export const RankCard = ({
   return (
     <div className="flex min-w-[375px] max-w-sm flex-col items-center rounded-md px-10 py-2 text-xl shadow-xl">
       {teamInfo?.img && (
-        <img
+        <LazyLoadImage
           src={
             teamInfo?.img &&
             `https://secure.cache.images.core.optasports.com/soccer/teams/75x75/uuid_${teamInfo?.img}.png`
           }
           alt="teamlogo"
           className="-mt-12 aspect-square w-32 rounded-full border-2 p-2"
+          effect="blur"
         />
       )}
       {playerInfo?.img && (
-        <img
+        <LazyLoadImage
+          effect="blur"
           src={playerInfo?.img}
           alt="teamlogo"
           className="-mt-12 aspect-square w-32 rounded-full border-2 p-2"
@@ -47,13 +50,28 @@ export const RankCard = ({
         <div className="flex flex-col items-center justify-center capitalize">
           <div>Rank</div>
           {rank && rank === 1 && (
-            <img src="/sports/gold.png" className="h-10 w-10" alt="1st" />
+            <LazyLoadImage
+              src="/sports/gold.png"
+              className="h-10 w-10"
+              alt="1st"
+              effect="blur"
+            />
           )}
           {rank && rank === 2 && (
-            <img src="/sports/silver.png" className="h-10 w-10" alt="1st" />
+            <LazyLoadImage
+              src="/sports/silver.png"
+              className="h-10 w-10"
+              alt="1st"
+              effect="blur"
+            />
           )}
           {rank && rank === 3 && (
-            <img src="/sports/bronze.png" className="h-10 w-10" alt="1st" />
+            <LazyLoadImage
+              src="/sports/bronze.png"
+              className="h-10 w-10"
+              alt="1st"
+              effect="blur"
+            />
           )}
         </div>
         <div className="flex flex-col items-center justify-center gap-3 capitalize">
@@ -133,10 +151,11 @@ export const RankCard = ({
             <div className="grid grid-cols-3 gap-2">
               <div className="flex flex-col items-center justify-center">
                 <div className="overflow-hidden rounded-full border-2 border-gray-500 p-1 text-xs">
-                  <img
+                  <LazyLoadImage
                     src={playerInfo?.teamImg}
                     alt="team"
                     className="h-8 w-8"
+                    effect="blur"
                   />
                 </div>
                 <div className="overflow-ellipsis whitespace-nowrap">
@@ -145,10 +164,11 @@ export const RankCard = ({
               </div>
               <div className="flex flex-col items-center justify-center">
                 <div className="overflow-hidden rounded-full border-2 border-gray-500 p-1 text-xs">
-                  <img
+                  <LazyLoadImage
                     src={playerInfo?.countryImg}
                     alt="team"
                     className="h-8 w-8"
+                    effect="blur"
                   />
                 </div>
                 <div className="overflow-ellipsis">
