@@ -1,8 +1,7 @@
 import axios from "axios";
 
 export async function getSearchShoppingTrends() {
-  let asdf;
-  axios
+  return axios
     .get("/v1/search/shop.json", {
       params: {
         query: "정장",
@@ -13,16 +12,10 @@ export async function getSearchShoppingTrends() {
         "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_SECRET,
       },
     })
-    .then(res => {
-      asdf = res.data;
-    });
-
-  if (asdf) {
-    return asdf;
-  } else return null;
+    .then(res => res.data);
 }
 
-export const getAllShoppingTrends = async () => {
+export const getNaverShoppingTrends = async () => {
   const request_body = {
     startDate: "2017-08-01",
     endDate: "2017-09-30",
@@ -36,21 +29,26 @@ export const getAllShoppingTrends = async () => {
     gender: "f",
   };
 
-  const res = await axios.post("/v1/datalab/shopping/categories", {
-    headers: {
-      "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
-      "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_SECRET,
-      "Content-Type": "application/json",
-      "Content-Length": 360,
-    },
-    request_body: JSON.stringify(request_body),
-  });
-
-  return res;
+  return axios
+    .post("/v1/datalab/shopping/categories", {
+      headers: {
+        "X-Naver-Client-Id": process.env.REACT_APP_NAVER_CLIENT_ID,
+        "X-Naver-Client-Secret": process.env.REACT_APP_NAVER_SECRET,
+        "Content-Type": "application/json",
+        "Content-Length": 360,
+      },
+      request_body: JSON.stringify(request_body),
+    })
+    .then(res => res.data);
 };
 
-export const getShppingSearchData = async () => {
-  const search = await getSearchShoppingTrends().then(data => data);
-  console.log(search);
-  return true;
+export const getShoppingSearchData = async () => {
+  const search = await getSearchShoppingTrends();
+  return search;
+};
+
+export const getAllShoppingTrends = async () => {
+  const naver = await getNaverShoppingTrends();
+  console.log(naver);
+  return naver;
 };
