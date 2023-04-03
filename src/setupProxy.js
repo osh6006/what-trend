@@ -8,6 +8,7 @@ module.exports = function (app) {
   appUse(app, "/competition/rankings/", "https://www.besoccer.com");
   appUse(app, "/player", "https://www.besoccer.com");
   appUse(app, "/v1", "https://openapi.naver.com");
+  appUse(app, "/best", "https://shopping.naver.com");
 };
 
 function appUse(app, endpoint, target) {

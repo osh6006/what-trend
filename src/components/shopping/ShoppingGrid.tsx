@@ -19,7 +19,7 @@ const border: colorPicker = {
 };
 
 const div: string = "space-y-3";
-const ul: string = "space-y-3 border-4 p-5";
+const ul: string = "space-y-3 border-4 p-5 rounded-md";
 const li: string = "flex items-center justify-around";
 const h1: string = "text-center text-lg font-bold uppercase";
 

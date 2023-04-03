@@ -5,10 +5,7 @@ import {
 } from "../api/shopping/shopping";
 
 export default function useShopping() {
-  const naverShopQuery = useQuery(["naver-rank"], getShoppingSearchData, {
-    staleTime: 1000 * 60 * 5,
-    refetchOnWindowFocus: false,
-  });
+  const naverShopQuery = useQuery(["naver-rank"], getShoppingSearchData, {});
 
   const allTrendsQuery = useQuery(
     ["all-shopping-trends"],
